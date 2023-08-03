@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar using HTML and CSS | Codehal</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">Logo</a>
+        
+        <input type="checkbox" id="check">
+        <label for="check" class="icons">
+            <i class='bx bx-menu' id="menu-icon"></i>
+            <i class='bx bx-x' id="close-icon"></i>
+        </label>
+
+        <nav class="navbar">
+            <a href="index.html">最新資訊</a>
+                <a href="https://www.fmsc.com.tw/ch/mainfood.php?n=food#pageCont3" target="_blank">商品介紹</a>
+                <a href="套餐&單點.html">套餐&單點</a>
+                <a href="伴手禮盒.html">伴手禮優惠</a>
+                <a href="https://shop.fmsc.com.tw/" target="_blank">網路購物</a>
+                <button class="btn" id="googleButton">快一點外帶自取</button>
+                    <script>
+                        document.getElementById("googleButton").addEventListener("click", function() {
+                            window.open("https://liff.line.me/1656578139-JBPA04W6/lafresh/store", "_blank");
+                        });
+                    </script>       
+        </nav>
+    </header>
+    <div class="v1">
+        <div class="v11">
+            <video class="mo1" src="corp_int.mp4" width="203px" height="360px" controls muted loop>              
+            </video>
+            <h3>鬍鬚張X可樂果<br>2023年7月聯名上市</h3>
+        </div>
+        <div class="v12">
+            <video class="mo2" src="mov2.mp4" width="203px" height="360px" controls muted loop>              
+            </video>
+            <h3>這個肉粽太狠<br>生產過程大解析</h3>
+        </div>
+    </div>
+
+</body> 
+
+</html>
