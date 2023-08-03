@@ -178,3 +178,33 @@ body{
     width: 90%;            
      } 
   }
+  .social{
+    transform: rotate(90deg);
+    position: fixed;
+    top: 350px;
+    left:-190px;
+    display: inline-flex;
+    
+    }
+  .social a{
+    font-size:15px;
+    text-align: center;
+    color:#f1640c;
+    text-decoration: none;
+    padding: 5px;    
+  }
+  .social img{
+    padding: 3px;
+  }
+
+  .facelogo{
+    transform: rotate(-90deg);
+  }
+  .Linelogo{
+    transform: rotate(-90deg);
+    width: 30px;
+    height: 30px;
+  }
+  .ytlogo{
+    transform: rotate(-90deg);
+  }
