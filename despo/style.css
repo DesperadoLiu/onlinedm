@@ -8,9 +8,8 @@
 }
 body{
   min-height: 100vh;
-  background: url(https://www.fmsc.com.tw/ch/tw/images/about/a/01.jpg) no-repeat;
-  background-size: cover;
-  background-position: center;
+  background-color: #FFFFFF; /* 深綠背景 */
+  color: #fff;
 }
 .header{
   position: fixed;
@@ -198,13 +197,13 @@ body{
   }
 
   .facelogo{
-    transform: rotate(-90deg);
+    transform: rotate(0deg);
   }
   .Linelogo{
-    transform: rotate(-90deg);
+    transform: rotate(0deg);
     width: 30px;
     height: 30px;
   }
   .ytlogo{
-    transform: rotate(-90deg);
+    transform: rotate(0deg);
   }
