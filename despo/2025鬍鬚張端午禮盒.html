@@ -100,11 +100,11 @@
         </label>
 
         <nav class="navbar">
-            <button onclick="window.open('https://shop.fmsc.com.tw/', '_blank')">立即選購</button>
+            <button onclick="window.open('https://shop.fmsc.com.tw/', '_blank' )" onclick="gtag('event', 'click_shop_now', { event_category: 'button', event_label: '立即選購' });">立即選購</button>
             <button onclick="window.open('https://www.fmsc.com.tw/ch/mainaddr.php?n=store#pageCont7', '_blank')">門市查詢</button>
-            <button onclick="window.open('https://www.fmsc.com.tw/ch/index.php', '_blank')">鬍鬚張官網</button>
-            <button onclick="window.open('https://www.facebook.com/FMSC1960.tw', '_blank')">追蹤粉絲團</button>
-            <button onclick="window.open('https://lin.ee/my1ihn4', '_blank')">加Line好友</button>
+            <button onclick="window.open('https://www.fmsc.com.tw/ch/index.php', '_blank')"  onclick="gtag('event', 'click_web_corp', { event_category: 'button', event_label: '鬍鬚張官網' });">鬍鬚張官網</button>
+            <button onclick="window.open('https://www.facebook.com/FMSC1960.tw', '_blank')" onclick="gtag('event', 'click_add_fb', { event_category: 'button', event_label: '追蹤粉絲團' });">追蹤粉絲團</button>
+            <button onclick="window.open('https://lin.ee/my1ihn4', '_blank')" onclick="gtag('event', 'click_add_line', { event_category: 'button', event_label: '加Line好友' });">加Line好友</button>
         </nav>
     </header>
     <div class="container">
