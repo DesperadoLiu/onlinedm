@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>猜拳遊戲</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* 頁面整體樣式與背景設定（吉卜力風格） */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      text-align: center;
+      background-image: url('https://cdn.pixabay.com/photo/2020/01/07/15/46/studio-ghibli-4746071_1280.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+
+    /* 遊戲主要容器樣式 */
+    .container {
+      background: rgba(0, 0, 0, 0.6); /* 黑色半透明背景 */
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 20px;
+    }
+
+    /* 標題樣式 */
+    h1 {
+      color: #ffe066;
+      font-size: 2.5rem;
+    }
+
+    /* 出拳圖片排列容器 */
+    .choices {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px 0;
+    }
+
+    /* 出拳圖片樣式（已設定寬100、高150） */
+    .choices img {
+  width: 100px;
+  height: 150px;
+  cursor: pointer;
+  border: 3px solid transparent;
+  border-radius: 10px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+
+    /* 滑鼠移到圖片上會放大並變色 */
+    .choices img:hover {
+      transform: scale(1.05);
+      border-color: #ffd43b;
+    }
+
+    /* 結果顯示區塊 */
+    .result {
+      font-size: 1.5rem;
+      margin: 20px 0;
+    }
+
+    /* 分數統計區樣式 */
+    .scoreboard {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 1.2rem;
+    }
+
+    /* 重新開始按鈕樣式 */
+    .reset-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #ffd43b;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .reset-btn:hover {
+      background-color: #ffa94d;
+    }
+
+    /* 勝利與失敗畫面 (Modal) 共用樣式 */
+    .modal {
+      display: none; /* 預設隱藏 */
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #333;
+      padding: 30px;
+      border-radius: 15px;
+      color: #fff;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    /* 勝利與失敗畫面按鈕樣式 */
+    .modal-content button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .reward-btn {
+      background-color: #4caf50;
+      color: #fff;
+    }
+
+    .reward-btn:hover {
+      background-color: #45a049;
+    }
+
+    .retry-btn {
+      background-color: #f44336;
+      color: #fff;
+    }
+
+    .retry-btn:hover {
+      background-color: #e53935;
+    }
+
+ //手機最佳化
+
+@media (max-width: 600px) {
+  .container {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .choices {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .choices img {
+    width: 100px;
+    height: 150px;
+  }
+
+  .result {
+    font-size: 1.2rem;
+  }
+
+  .scoreboard {
+    font-size: 1rem;
+    padding: 8px;
+  }
+
+  .reset-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+  }
+
+  .modal-content {
+    width: 90%;
+    font-size: 1.2rem;
+  }
+
+  .modal-content button {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>猜拳遊戲 ✌️🪨✋</h1>
+
+    <!-- 出拳圖片 -->
+    <div class="choices">
+      <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2025/05/ChatGPT-Image-2025年5月15日-下午03_30_18.png" onclick="play('scissors')" title="剪刀">
+      <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2025/05/ChatGPT-Image-2025年5月15日-下午03_30_12.png" alt="石頭" onclick="play('rock')" title="石頭">
+      <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2025/05/ChatGPT-Image-2025年5月15日-下午03_30_06.png" alt="布" onclick="play('paper')" title="布">
+    </div>
+
+    <!-- 顯示結果 -->
+    <div class="result" id="result">請選擇一個出拳！</div>
+
+    <!-- 記分板 -->
+    <div class="scoreboard" id="scoreboard">
+      勝利：0 ｜ 平手：0 ｜ 失敗：0 ｜ 總場次：0
+    </div>
+
+    <!-- 重新開始按鈕 -->
+    <button class="reset-btn" onclick="resetGame()">重新開始</button>
+  </div>
+
+  <!-- 音效設定 -->
+  <audio id="clickSound" src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2025/05/achive-sound-132273.mp3" preload="auto"></audio>
+  <audio id="winSound" src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2025/05/achive-sound-132273.mp3" preload="auto"></audio>
+  <audio id="loseSound" src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2025/05/achive-sound-132273.mp3" preload="auto"></audio>
+
+  <!-- 勝利畫面 -->
+  <div class="modal" id="winModal">
+    <div class="modal-content">
+      🎉 恭喜你 5 戰中取得 3 勝，獲得勝利！<br>
+      <button class="reward-btn" onclick="claimReward()">領取優惠券</button>
+    </div>
+  </div>
+
+  <!-- 失敗畫面 -->
+  <div class="modal" id="loseModal">
+    <div class="modal-content">
+      😢 很可惜，你未能贏得比賽，再接再勵！<br>
+      <button class="retry-btn" onclick="resetGame()">再玩一次</button>
+    </div>
+  </div>
+
+  <script>
+    // DOM 元素與音效物件抓取
+    const resultDiv = document.getElementById('result');
+    const scoreboardDiv = document.getElementById('scoreboard');
+    const clickSound = document.getElementById('clickSound');
+    const winSound = document.getElementById('winSound');
+    const loseSound = document.getElementById('loseSound');
+    const winModal = document.getElementById('winModal');
+    const loseModal = document.getElementById('loseModal');
+
+    // 初始分數變數
+    let wins = 0, ties = 0, losses = 0, total = 0;
+
+    // 玩家出拳處理主函式
+    function play(playerChoice) {
+      // 若已經玩完 5 次，停止遊戲
+      if (total >= 5) return;
+
+      clickSound.play(); // 播放點擊音效
+
+      // 電腦出拳隨機產生
+      const choices = ['rock', 'paper', 'scissors'];
+      const computerChoice = choices[Math.floor(Math.random() * 3)];
+
+      // 勝負判斷
+      let resultText = '';
+      if (playerChoice === computerChoice) {
+        ties++;
+        resultText = '平手！';
+      } else if (
+        (playerChoice === 'rock' && computerChoice === 'scissors') ||
+        (playerChoice === 'paper' && computerChoice === 'rock') ||
+        (playerChoice === 'scissors' && computerChoice === 'paper')
+      ) {
+        wins++;
+        resultText = '你贏了！🎉';
+        winSound.play();
+      } else {
+        losses++;
+        resultText = '你輸了～ 😢';
+        loseSound.play();
+      }
+
+      total++;
+
+      // 顯示當前出拳與結果
+      resultDiv.innerHTML = `你出的是 <strong>${translate(playerChoice)}</strong>，電腦出的是 <strong>${translate(computerChoice)}</strong><br>${resultText}`;
+      scoreboardDiv.innerHTML = `勝利：${wins} ｜ 平手：${ties} ｜ 失敗：${losses} ｜ 總場次：${total}`;
+
+      // 判斷是否遊戲結束（5 次）
+      if (total === 5) {
+        setTimeout(() => {
+          if (wins >= 3) {
+            winModal.style.display = 'flex'; // 勝利畫面
+          } else {
+            loseModal.style.display = 'flex'; // 失敗畫面
+          }
+        }, 500);
+      }
+    }
+
+    // 將英文出拳轉為中文顯示
+    function translate(choice) {
+      switch (choice) {
+        case 'rock': return '石頭';
+        case 'paper': return '布';
+        case 'scissors': return '剪刀';
+      }
+    }
+
+    // 重設所有遊戲變數與畫面
+    function resetGame() {
+      wins = ties = losses = total = 0;
+      resultDiv.innerHTML = '請選擇一個出拳！';
+      scoreboardDiv.innerHTML = `勝利：0 ｜ 平手：0 ｜ 失敗：0 ｜ 總場次：0`;
+      winModal.style.display = 'none';
+      loseModal.style.display = 'none';
+    }
+
+    // 領取優惠券時跳轉連結（請改為你自己的）
+    function claimReward() {
+      window.location.href = 'https://example.com/coupon';
+    }
+  </script>
+
+</body>
+</html>
