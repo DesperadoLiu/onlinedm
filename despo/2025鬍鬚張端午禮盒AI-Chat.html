@@ -88,6 +88,21 @@
             }
         }
 
+    /* ✅ 手機版導覽列按鈕置中 */
+    @media (max-width: 768px) {
+      .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .navbar button {
+        width: 80%;
+        margin: 8px 0;
+      }
+    }
+
     /* === Chat button & window === */
     #chat-toggle {
       position: fixed;
