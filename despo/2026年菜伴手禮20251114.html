@@ -244,12 +244,12 @@
   <!-- AI 對話視窗 -->
   <div class="ai-chatbox" id="aiChat">
     <div class="ai-chatbox__header">
-      <span>年菜線上問答(AI答覆，非真人)</span>
+      <span>年菜問答(AI技術非真人)</span>
       <button class="ai-chatbox__close" id="aiClose">✕</button>
     </div>
     <div class="ai-chatbox__log" id="aiLog" aria-live="polite"></div>
     <div class="ai-chatbox__inputbar">
-      <input class="ai-chatbox__input" id="aiInput" placeholder="請輸入您的提問?" />
+      <input class="ai-chatbox__input" id="aiInput" placeholder="您的提問是?" />
       <button class="ai-chatbox__send" id="aiSend">送出</button>
     </div>
   </div>
@@ -286,7 +286,7 @@
     function showThinking(){
       thinkingRow = document.createElement('div');
       thinkingRow.className = 'row assistant';
-      thinkingRow.innerHTML = `<div class="bubble">正在為您查詢…</div>`;
+      thinkingRow.innerHTML = `<div class="bubble">AI思考中…</div>`;
       $log.appendChild(thinkingRow);
       $log.scrollTop = $log.scrollHeight;
     }
