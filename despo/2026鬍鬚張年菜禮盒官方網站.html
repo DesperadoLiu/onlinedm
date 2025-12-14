@@ -323,7 +323,8 @@
             // 【資安修正】不再傳送前端 Token，避免暴露
             // frontendToken: AUTH_TOKEN, 
             sessionId: SESSION,
-            metadata: { page: location.pathname }
+            // ⭐⭐⭐ 關鍵修正：將 location.pathname 改為 location.href 傳送完整的 URL ⭐⭐⭐
+            metadata: { page: location.href } 
           })
         });
 
@@ -334,6 +335,8 @@
             append('assistant', data.answer);
         } else {
             console.error('API Error:', data.error);
+            // 由於 GAS 後端會回傳 "Access Denied."，所以這裡回傳的通用錯誤訊息
+            // 很可能就是因為來源檢查失敗。
             append('assistant', '抱歉，目前無法處理您的請求。');
         }
 
