@@ -41,15 +41,11 @@
 
     @media (min-width: 600px) { .vdo a:first-child img { width: 60%; } .vdo a:nth-child(2) img { width: 38%; } }
 
-    /* 手機版導覽列按鈕置中 */
     @media (max-width: 768px) {
       .navbar { display: flex; flex-direction: column; align-items: center; text-align: center; }
       .navbar button { width: 80%; margin: 8px 0; }
     }
 
-/* ======= 超迷你浮動泡泡版 AI 客服 - 金色版 ======= */
-
-/* 迷你浮動 FAB（金色） */
 .ai-fab {
   position: fixed;
   bottom: 16px;
@@ -78,7 +74,6 @@
   100% { transform: translateY(0); }
 }
 
-/* ====== 超迷你 Chatbox（精品金色版） ====== */
 .ai-chatbox {
   position: fixed;
   bottom: 65px;
@@ -94,12 +89,11 @@
   z-index: 999;
 }
 
-/* 在客服泡泡旁顯示文字：線上AI詢問 */
 .ai-fab-label {
   position: fixed;
   font-weight: bold;
-  bottom: 23px;   /* 對齊泡泡垂直位置 */
-  right: 64px;    /* 泡泡右方 + 文字 */
+  bottom: 23px;   
+  right: 64px;    
   background:#C59A2F;
   color: #fff;
   padding: 4px 10px;
@@ -107,13 +101,12 @@
   font-size: 12px;
   backdrop-filter: blur(4px);
   z-index: 1000;
-  pointer-events: none; /* 不影響點擊 */
+  pointer-events: none; 
   white-space: nowrap;
   font-family: 'Microsoft JhengHei', sans-serif;
 }
 
 
-/* 頂部標題列（香檳金） */
 .ai-chatbox__header {
   height: 40px;
   background: #C59A2F;
@@ -136,7 +129,6 @@
   cursor: pointer;
 }
 
-/* 訊息內容區 */
 .ai-chatbox__log {
   flex: 1;
   padding: 10px;
@@ -146,7 +138,6 @@
   letter-spacing: 0.3px;
 }
 
-/* 輸入區 */
 .ai-chatbox__inputbar {
   display: flex;
   border-top: 1px solid #eee;
@@ -160,7 +151,6 @@
   outline: none;
 }
 
-/* 送出按鈕（精品金） */
 .ai-chatbox__send {
   width: 62px;
   border: none;
@@ -172,7 +162,6 @@
   box-shadow: inset 0 1px 3px rgba(255,255,255,0.4), inset 0 -2px 3px rgba(0,0,0,0.15);
 }
 
-/* 氣泡（迷你圓潤） */
 .bubble {
   display: inline-block;
   max-width: 85%;
@@ -187,7 +176,7 @@
 .row { margin: 5px 0; }
 .row.user { text-align: right; }
 .row.user .bubble { 
-  background: #FFF7E0; /* 淺金色泡泡 */
+  background: #FFF7E0; 
   border-color: #E4C886;
 }
 .row.assistant { text-align: left; }
@@ -249,14 +238,7 @@
   </div>
 
   <script>
-    // ======== 設定：Google Apps Script Web App URL ========
-    // 請將下方的網址替換為您 GAS 發布後的 "Web App URL" (以 https://script.google.com/macros/s/... 開頭)
     const GAS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxGrBSYcw70GvGhN2lo1IuujgbiE5za6T5Wc9vDpW_fs29rwIbxVQCokdqmRAPZKc7r6g/exec'; 
-    
-    // 【資安修正】已移除 AUTH_TOKEN 變數。Token 絕不能暴露於前端程式碼中。
-    // 請確保您的 GAS 後端也移除了 Token 驗證邏輯。
-
-    // ======== UI 綁定 ========
     const $fab  = document.getElementById('aiFab');
     const $box  = document.getElementById('aiChat');
     const $log  = document.getElementById('aiLog');
@@ -275,14 +257,9 @@
       const row = document.createElement('div');
       row.className = `row ${role}`;
 
-      // 建立氣泡元素
-      const bubble = document.createElement('div');
+    const bubble = document.createElement('div');
       bubble.className = 'bubble';
-      
-      // 使用 textContent 插入文字，防堵 XSS
       bubble.textContent = text || '';
-      
-      // 保留換行與空白
       bubble.style.whiteSpace = 'pre-wrap'; 
       bubble.style.wordBreak = 'break-word';
 
@@ -308,11 +285,7 @@
       showThinking();
 
       try {
-        // GA 事件
         if (window.gtag) { gtag('event','ai_chat_send', { event_category:'ai_chat', event_label:'send' }); }
-
-        // 修改為呼叫 GAS (使用 POST)
-        // 注意：GAS 通常需要 Content-Type: text/plain 來避免 CORS OPTIONS 預檢失敗，但仍傳送 JSON 字串
         const resp = await fetch(GAS_SCRIPT_URL, {
           method: 'POST',
           headers: {
@@ -320,10 +293,7 @@
           },
           body: JSON.stringify({
             message: text,
-            // 【資安修正】不再傳送前端 Token，避免暴露
-            // frontendToken: AUTH_TOKEN, 
             sessionId: SESSION,
-            // ⭐⭐⭐ 關鍵修正：將 location.pathname 改為 location.href 傳送完整的 URL ⭐⭐⭐
             metadata: { page: location.href } 
           })
         });
@@ -335,8 +305,6 @@
             append('assistant', data.answer);
         } else {
             console.error('API Error:', data.error);
-            // 由於 GAS 後端會回傳 "Access Denied."，所以這裡回傳的通用錯誤訊息
-            // 很可能就是因為來源檢查失敗。
             append('assistant', '抱歉，目前無法處理您的請求。');
         }
 
@@ -349,10 +317,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
