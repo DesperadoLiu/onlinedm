@@ -49,12 +49,15 @@
         .chat-active { display: flex !important; animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* AI 語音按鈕旋轉動畫 */
+        .ai-loading { animation: spin 1s linear infinite; pointer-events: none; background-color: #E87033 !important; color: white !important; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
         .loading-dots span { animation: blink 1.4s infinite both; }
         .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
         .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
         @keyframes blink { 0% { opacity: 0.2; } 20% { opacity: 1; } 100% { opacity: 0.2; } }
 
-        /* 影片容器比例控制 */
         .video-container {
             position: relative;
             padding-bottom: 56.25%; /* 16:9 比例 */
@@ -62,13 +65,34 @@
             overflow: hidden;
             border-radius: 2.5rem;
         }
-        .video-container iframe, .video-container video {
+        .video-container video {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
         }
+
+        /* 提示框樣式 */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 12px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+        @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
+        @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -121,7 +145,7 @@
             <div class="text-center mb-20">
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-widest">關於京簡康</h2>
                 <div class="w-16 h-1.5 bg-brand-orange mx-auto rounded-full mb-8"></div>
-                <p class="text-slate-600 text-lg max-w-3xl mx-auto leading-loose font-light">
+                <p class="text-slate-600 text-lg max-w-3xl mx-auto leading-loose font-light text-center">
                     透過新鮮食材、原形食物與低溫烹調做法，滿足您對健康美味的需求。<br>
                     我們深信，每一份餐盒都是對身體最好的照顧。
                 </p>
@@ -130,31 +154,30 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <div class="p-12 bg-slate-50 rounded-[3.5rem] text-center border border-slate-100 transition-all hover:border-brand-orange group">
                     <div class="text-6xl font-black text-brand-orange mb-8 group-hover:scale-110 transition-transform">京</div>
-                    <h4 class="text-xl font-bold mb-4 text-slate-800 tracking-widest">最上級</h4>
+                    <h4 class="text-xl font-bold mb-4 text-slate-800 tracking-widest uppercase">最上級</h4>
                     <p class="text-slate-500 text-sm leading-relaxed">代表最頂尖的選擇，提倡原形食材、安心健康。</p>
                 </div>
                 <div class="p-12 bg-slate-50 rounded-[3.5rem] text-center border border-slate-100 transition-all hover:border-brand-orange group">
                     <div class="text-6xl font-black text-brand-orange mb-8 group-hover:scale-110 transition-transform">簡</div>
-                    <h4 class="text-xl font-bold mb-4 text-slate-800 tracking-widest">簡單原味</h4>
+                    <h4 class="text-xl font-bold mb-4 text-slate-800 tracking-widest uppercase">簡單原味</h4>
                     <p class="text-slate-500 text-sm leading-relaxed">簡單調味不繁瑣，讓您吃得到食材最真實的味道。</p>
                 </div>
                 <div class="p-12 bg-slate-50 rounded-[3.5rem] text-center border border-slate-100 transition-all hover:border-brand-orange group">
                     <div class="text-6xl font-black text-brand-orange mb-8 group-hover:scale-110 transition-transform">康</div>
-                    <h4 class="text-xl font-bold mb-4 text-slate-800 tracking-widest">更健康</h4>
+                    <h4 class="text-xl font-bold mb-4 text-slate-800 tracking-widest uppercase">更健康</h4>
                     <p class="text-slate-500 text-sm leading-relaxed">透過均衡營養與專業烹調，讓享用餐點成為健康的來源。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 形象影片區塊 (Brand Video) -->
+    <!-- 形象影片區塊 (Video) -->
     <section id="video" class="py-24 bg-slate-100">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-wider">品牌形象影片</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-wider uppercase">品牌形象影片</h2>
                 <div class="w-12 h-1.5 bg-brand-orange mx-auto rounded-full"></div>
             </div>
-            <!-- 使用 <video> 標籤播放直連 MP4 檔案，並設定自動播放與重複播放 -->
             <div class="video-container shadow-2xl bg-black">
                 <video 
                     src="https://videos.files.wordpress.com/emHG9b3J/jjk_e5bdb1e78987_e5bda2e8b1a1e4b880e58886e58d8a.mp4" 
@@ -164,7 +187,6 @@
                     playsinline 
                     controls
                     class="w-full h-full object-cover">
-                    您的瀏覽器不支援 HTML5 影片播放。
                 </video>
             </div>
             <p class="mt-8 text-center text-slate-500 italic font-light tracking-widest">
@@ -177,7 +199,7 @@
     <section id="menu" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-wider">健康。新餐食</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-wider uppercase">健康。新餐食</h2>
                 <div class="w-12 h-1.5 bg-brand-orange mx-auto rounded-full"></div>
                 <p class="text-slate-500 mt-6 tracking-[0.2em] font-medium">全系列 12 款精選餐盒，點擊 ✨ 聽取營養介紹</p>
             </div>
@@ -191,9 +213,8 @@
     <!-- 5. 服務據點 (Locations) -->
     <section id="locations" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-12 tracking-wider">服務據點</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-12 tracking-wider uppercase">服務據點</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-                <!-- 延平店 -->
                 <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-200 hover:border-brand-orange transition-colors">
                     <h3 class="text-2xl font-bold text-brand-orange mb-4 text-center">台北延平店</h3>
                     <p class="text-slate-600 text-sm mb-2 text-center">📍 台北市中正區延平南路171巷1號1樓</p>
@@ -203,7 +224,6 @@
                         <a href="https://reurl.cc/E4peRK" target="_blank" class="flex-[1.5] py-3 btn-primary text-white rounded-xl text-xs font-bold text-center">立即訂餐</a>
                     </div>
                 </div>
-                <!-- 伊通店 -->
                 <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-200 hover:border-brand-orange transition-colors">
                     <h3 class="text-2xl font-bold text-brand-orange mb-4 text-center">台北伊通店</h3>
                     <p class="text-slate-600 text-sm mb-2 text-center">📍 台北市中山區伊通街109之2號1樓</p>
@@ -213,7 +233,6 @@
                         <a href="https://reurl.cc/yYQGMO" target="_blank" class="flex-[1.5] py-3 btn-primary text-white rounded-xl text-xs font-bold text-center">立即訂餐</a>
                     </div>
                 </div>
-                <!-- 北大店 -->
                 <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-200 hover:border-brand-orange transition-colors">
                     <h3 class="text-2xl font-bold text-brand-orange mb-4 text-center">三峽北大店</h3>
                     <p class="text-slate-600 text-sm mb-2 text-center">📍 新北市三峽區學成路250號</p>
@@ -227,7 +246,7 @@
         </div>
     </section>
 
-    <!-- ✨ AI 聊天視窗 -->
+    <!-- AI 聊天管家 -->
     <div id="aiChat" class="fixed bottom-6 right-6 z-[100] chat-window flex-col bg-white w-[350px] md:w-[420px] h-[550px] rounded-[2.5rem] overflow-hidden border border-brand-orange/20">
         <div class="p-6 btn-primary text-white flex justify-between items-center shadow-lg">
             <div class="flex items-center gap-3">
@@ -241,51 +260,54 @@
         </div>
         <div id="chatHistory" class="flex-grow p-5 overflow-y-auto bg-slate-50 space-y-4 text-sm scroll-smooth">
             <div class="bg-white border border-slate-100 p-4 rounded-3xl rounded-tl-none text-slate-700 shadow-sm leading-relaxed">
-                您好！我是京簡康的 ✨ **AI 營養管家**。我可以根據您的目標為您推薦餐盒。請問您今天想達成什麼健康目標？
+                您好！我是京簡康的 ✨ **AI 營養管家**。您可以問我關於餐點營養或推薦口味的問題！
             </div>
         </div>
         <div id="chatLoading" class="hidden px-6 py-2">
             <div class="loading-dots text-brand-orange text-lg"><span>●</span><span>●</span><span>●</span></div>
         </div>
         <div class="p-5 bg-white border-t border-slate-100 flex gap-3">
-            <input id="userInput" type="text" placeholder="例如：我想增肌推薦什麼？" class="flex-grow bg-slate-100 border-none rounded-2xl px-5 py-3 text-sm focus:ring-2 focus:ring-brand-orange outline-none transition-all">
-            <button onclick="sendMessage()" class="bg-brand-orange text-white w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all">
+            <input id="userInput" type="text" placeholder="推薦高蛋白餐盒..." class="flex-grow bg-slate-100 border-none rounded-2xl px-5 py-3 text-sm focus:ring-2 focus:ring-brand-orange outline-none">
+            <button onclick="sendMessage()" class="bg-brand-orange text-white w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg active:scale-95 transition-all">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
             </button>
         </div>
     </div>
 
-    <!-- 門市選擇 Modal (導覽列使用) -->
+    <!-- 門市選擇 Modal -->
     <div id="storeModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
         <div class="absolute inset-0 bg-slate-900/65 backdrop-blur-md" onclick="toggleModal(false)"></div>
-        <div class="relative bg-white rounded-[3rem] w-full max-lg overflow-hidden shadow-2xl">
+        <div class="relative bg-white rounded-[3rem] w-full max-w-lg overflow-hidden shadow-2xl">
             <div class="p-8 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
                 <h3 class="text-xl font-bold text-brand-dark">請選擇預訂門市</h3>
                 <button onclick="toggleModal(false)" class="text-slate-400 hover:text-slate-900 text-3xl">&times;</button>
             </div>
             <div class="p-8 space-y-4">
                 <a href="https://reurl.cc/E4peRK" target="_blank" class="flex items-center justify-between p-7 border border-slate-100 rounded-3xl hover:bg-orange-50 transition-all group shadow-sm">
-                    <div><span class="block font-bold text-lg text-slate-800">台北延平店</span><span class="text-xs text-slate-400 italic mt-1">台北市中正區延平南路171巷1號</span></div>
+                    <div><span class="block font-bold text-lg">台北延平店</span><span class="text-xs text-slate-400">台北市中正區延平南路171巷1號</span></div>
                     <span class="bg-brand-orange text-white w-10 h-10 rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform">→</span>
                 </a>
                 <a href="https://reurl.cc/yYQGMO" target="_blank" class="flex items-center justify-between p-7 border border-slate-100 rounded-3xl hover:bg-orange-50 transition-all group shadow-sm">
-                    <div><span class="block font-bold text-lg text-slate-800">台北伊通店</span><span class="text-xs text-slate-400 italic mt-1">台北市中山區伊通街109之2號</span></div>
+                    <div><span class="block font-bold text-lg">台北伊通店</span><span class="text-xs text-slate-400">台北市中山區伊通街109之2號</span></div>
                     <span class="bg-brand-orange text-white w-10 h-10 rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform">→</span>
                 </a>
                 <a href="https://ddc.ai/1bblEe" target="_blank" class="flex items-center justify-between p-7 border border-slate-100 rounded-3xl hover:bg-orange-50 transition-all group shadow-sm">
-                    <div><span class="block font-bold text-lg text-slate-800">三峽北大店</span><span class="text-xs text-slate-400 italic mt-1">新北市三峽區學成路250號</span></div>
+                    <div><span class="block font-bold text-lg">三峽北大店</span><span class="text-xs text-slate-400">新北市三峽區學成路250號</span></div>
                     <span class="bg-brand-orange text-white w-10 h-10 rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform">→</span>
                 </a>
             </div>
         </div>
     </div>
 
+    <!-- 提示框 -->
+    <div id="toast">訊息</div>
+
     <!-- 頁尾 -->
     <footer class="bg-brand-dark text-white py-20 text-center">
         <div class="mb-10 flex justify-center">
-            <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-LOGO-給廠商-03.png" alt="京簡康 Logo" class="h-20 w-auto brightness-0 invert opacity-90 object-contain">
+            <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-LOGO-給廠商-03.png" alt="Logo" class="h-20 w-auto brightness-0 invert opacity-90 object-contain">
         </div>
-        <p class="text-brand-orange text-base font-bold tracking-[0.4em] mb-6">京簡康 - 健康新餐食</p>
+        <p class="text-brand-orange text-base font-bold tracking-[0.4em] mb-6 uppercase">京簡康 - 健康新餐食</p>
         <p class="text-slate-500 text-xs italic mb-12 tracking-[0.3em] uppercase font-medium">健康不簡單，簡單才健康</p>
         
         <div class="flex justify-center space-x-16 mb-12">
@@ -294,28 +316,27 @@
                 <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center group-hover:bg-brand-orange transition-colors">
                     <svg class="w-10 h-10 fill-current" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3l-.5 3H13v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>
                 </div>
-                <span class="text-xs tracking-widest opacity-70 group-hover:opacity-100 font-bold">Facebook 粉絲團</span>
+                <span class="text-xs tracking-widest opacity-70 font-bold uppercase">Facebook 粉絲團</span>
             </a>
-            <!-- Official Line -->
+            <!-- Line -->
             <a href="https://lin.ee/5qgDoSu" target="_blank" class="text-slate-400 hover:text-white transition-all flex flex-col items-center gap-3 group">
                 <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center group-hover:bg-brand-orange transition-colors">
                     <svg class="w-10 h-10 fill-current" viewBox="0 0 24 24"><path d="M24 10.3c0-4.6-5.4-8.3-12-8.3S0 5.7 0 10.3c0 4.1 4.3 7.5 10.1 8.2.4.1.9.4 1 .9.1.5.1 1.2 0 1.9-.1.4-.5 1.7-.6 1.8 0 .1-.3.5 1.1.3.8-.1 4.3-2.6 5.8-4.4 1.5-1.8 2.3-3.6 2.3-5.3 4.3-3.4 4.3-3.4 4.3-3.4zM7.2 13.2H4.8c-.2 0-.4-.2-.4-.4V7.6c0-.2.2-.4.4-.4h.4c.2 0 .4.2.4.4v4.8h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4zm2.8 0h-.4c-.2 0-.4-.2-.4-.4V7.6c0-.2.2-.4.4-.4h.4c.2 0 .4.2.4.4v5.2c0 .2-.2.4-.4.4zm5.5 0h-.4c-.1 0-.2 0-.3-.1L12.4 9v3.8c0 .2-.2.4-.4.4h-.4c-.2 0-.4-.2-.4-.4V7.6c0-.2.2-.4.4-.4h.4c.1 0 .2 0 .3.1l2.4 4.1V7.6c0-.2.2-.4.4-.4h.4c.2 0 .4.2.4.4v5.2c0 .2-.2.4-.4.4zm4.1-1.1h-1.6V10h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4zm0-2.8h-1.6V7.6h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4zm0 5.1h-1.6c-.2 0-.4-.2-.4-.4v-5.2c0-.2.2-.4.4-.4h2.4c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4H18v1.2h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4H18v1.2h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4z"/></svg>
                 </div>
-                <span class="text-xs tracking-widest opacity-70 group-hover:opacity-100 font-bold">官方 Line 帳號</span>
+                <span class="text-xs tracking-widest opacity-70 font-bold uppercase">官方 Line 帳號</span>
             </a>
         </div>
-        
-        <div class="text-slate-700 text-[10px] tracking-widest">© 2024 JING JIAN KANG. All Rights Reserved.</div>
+        <div class="text-slate-700 text-[10px] tracking-widest uppercase">© 2024 JING JIAN KANG. All Rights Reserved.</div>
     </footer>
 
     <script>
+        // GAS 正式網址
+        const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzDdDOHTXsUke8Hh5ZuKZeeP5mZimzlgssb_5KPMeYaqBrlKVjhtqSeCcFebZfyPYDMNA/exec"; 
         const apiKey = ""; 
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'jjk-web-official';
 
-        // 完整 12 項餐盒數據
         const menuData = [
             { id: 1, name: "香魯牛腱餐盒", price: 170, desc: "精選十三香滷包，慢火燉煮牛腱，濃郁風味，層次分明。牛原料產地：澳洲、美國。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/香魯牛煎餐盒-去番茄.png" },
-            { id: 2, name: "焙煎胡麻肉片餐盒", price: 115, desc: "嚴選日式焙煎胡麻醬，香味濃郁，搭配豬肉片口感滑順。豬原料產地：台灣、巴拉圭等。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/焙煎胡麻肉片餐盒-去番茄.png" },
+            { id: 2, name: "焙煎胡麻肉片餐盒", price: 115, desc: "嚴選日式焙煎胡麻醬，香味濃郁，搭配豬肉片。豬原料產地：台灣、巴拉圭等。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/焙煎胡麻肉片餐盒-去番茄.png" },
             { id: 3, name: "蔥鹽雞胸餐盒", price: 135, desc: "雙油淬煉紅蔥油與橄欖油黃金比例，搭配新鮮青蔥，爽脆蔥油香。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/蔥鹽雞胸-外帶.jpg" },
             { id: 4, name: "烤檸檬鮭魚餐盒", price: 199, desc: "鮭魚肉含高蛋白質，蒸烤後皮酥肉嫩，外酥內軟。補充優質脂肪。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/烤檸檬鮭魚餐盒-去番茄.png" },
             { id: 5, name: "日式烤雞腿餐盒", price: 170, desc: "去骨雞腿刷上日式醬料，烤至金黃焦香，吮指美味。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/日式烤雞腿餐盒-去番茄.png" },
@@ -325,19 +346,26 @@
             { id: 9, name: "豬雞妙算餐盒", price: 135, desc: "胡麻豬肉片與黑胡椒香嫩雞胸雙饗組合。飽足感十足。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/經典豬雞妙算餐盒-去番茄.png" },
             { id: 10, name: "韓式泡菜雞胸餐盒", price: 135, desc: "低溫蒸煮雞胸搭配韓式泡菜，脆口清爽低負擔。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/韓式泡菜雞胸餐盒-去番茄.png" },
             { id: 11, name: "壽喜燒豚肉片餐盒", price: 125, desc: "汆燙軟嫩豬肉片淋上日式壽喜燒醬。豬原料產地：台灣等。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/壽喜燒豚肉片餐盒-去番茄.png" },
-            { id: 12, name: "黑胡椒嫩雞胸餐盒", price: 135, desc: "新鮮雞胸以低溫蒸煮熟化，不過度烹調保留肉質鮮嫩，撒上粗磨黑胡椒帶出純粹美味。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/黑胡椒嫩雞胸餐盒-去番茄.png" }
+            { id: 12, name: "黑胡椒嫩雞胸餐盒", price: 135, desc: "新鮮雞胸以低溫蒸煮熟化，保留肉質鮮嫩，帶出純粹美味。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/黑胡椒嫩雞胸餐盒-去番茄.png" }
         ];
+
+        function showToast(msg) {
+            const t = document.getElementById("toast");
+            t.innerText = msg;
+            t.className = "show";
+            setTimeout(() => { t.className = ""; }, 3000);
+        }
 
         function renderMenu() {
             const container = document.getElementById('mealContainer');
             if (!container) return;
             container.innerHTML = menuData.map(meal => `
                 <div class="menu-card bg-white rounded-[3rem] overflow-hidden border border-slate-100 flex flex-col h-full shadow-sm relative group">
-                    <button onclick="playMealAudio('${meal.name}', '${meal.desc}')" class="absolute top-5 right-5 bg-white/90 hover:bg-brand-orange hover:text-white text-brand-orange w-11 h-11 rounded-full flex items-center justify-center shadow-lg z-10 transition-all active:scale-90" title="AI 語音導覽">
+                    <button onclick="playMealAudioFromGAS(this, '${meal.name}', '${meal.desc}')" class="absolute top-5 right-5 bg-white/90 hover:bg-brand-orange hover:text-white text-brand-orange w-11 h-11 rounded-full flex items-center justify-center shadow-lg z-10 transition-all active:scale-90" title="點擊聽介紹">
                         ✨
                     </button>
                     <div class="h-64 bg-slate-50 flex items-center justify-center p-8 overflow-hidden">
-                        <img src="${meal.img}" class="max-h-full max-w-full object-contain product-img transition-transform duration-700 group-hover:scale-110" alt="${meal.name}" onerror="this.src='https://placehold.co/400x400?text=餐點準備中'">
+                        <img src="${meal.img}" class="max-h-full max-w-full object-contain product-img transition-transform duration-700 group-hover:scale-110" alt="${meal.name}">
                     </div>
                     <div class="p-10 flex-grow flex flex-col border-t border-slate-50">
                         <div class="flex justify-between items-center mb-4">
@@ -350,7 +378,67 @@
             `).join('');
         }
 
-        document.addEventListener('DOMContentLoaded', renderMenu);
+        async function playMealAudioFromGAS(btn, name, description) {
+            if (btn.classList.contains('ai-loading')) return;
+            btn.classList.add('ai-loading');
+            const textToSay = `為您介紹：${name}。這份餐點特色是：${description}`;
+            
+            try {
+                const response = await fetch(GAS_WEB_APP_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({ text: textToSay })
+                });
+                const result = await response.json();
+                const pcmData = result.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
+                if (!pcmData) throw new Error('無法取得語音資料');
+                const pcmBlob = Uint8Array.from(atob(pcmData), c => c.charCodeAt(0));
+                const wavHeader = new ArrayBuffer(44);
+                const view = new DataView(wavHeader);
+                view.setUint32(0, 0x52494646, false); view.setUint32(4, 36 + pcmBlob.length, true); view.setUint32(8, 0x57415645, false); view.setUint12(12, 0x666d7420, false); view.setUint32(16, 16, true); view.setUint16(20, 1, true); view.setUint16(22, 1, true); view.setUint32(24, 24000, true); view.setUint32(28, 48000, true); view.setUint16(32, 2, true); view.setUint16(34, 16, true); view.setUint32(36, 0x64617461, false); view.setUint32(40, pcmBlob.length, true);
+                const audio = new Audio(URL.createObjectURL(new Blob([wavHeader, pcmBlob], { type: 'audio/wav' })));
+                audio.onended = () => btn.classList.remove('ai-loading');
+                await audio.play();
+            } catch (err) {
+                btn.classList.remove('ai-loading');
+                showToast('系統繁忙，請稍後再試。');
+            }
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('userInput');
+            const history = document.getElementById('chatHistory');
+            const loading = document.getElementById('chatLoading');
+            const text = input.value.trim();
+            if (!text) return;
+            const userMsg = document.createElement('div');
+            userMsg.className = "ml-auto bg-brand-orange text-white p-4 rounded-3xl rounded-tr-none text-sm max-w-[85%] shadow-md";
+            userMsg.innerText = text;
+            history.appendChild(userMsg);
+            input.value = "";
+            history.scrollTop = history.scrollHeight;
+            loading.classList.remove('hidden');
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: text }] }],
+                        systemInstruction: { parts: [{ text: "你是京簡康的親切管家。菜單資料：" + JSON.stringify(menuData) }] }
+                    })
+                });
+                const result = await response.json();
+                const aiResponse = result.candidates?.[0]?.content?.parts?.[0]?.text || "我現在忙不過來，請稍後再問我！";
+                loading.classList.add('hidden');
+                const aiMsg = document.createElement('div');
+                aiMsg.className = "bg-white border border-slate-100 p-4 rounded-3xl rounded-tl-none text-slate-700 shadow-sm leading-relaxed max-w-[85%]";
+                aiMsg.innerText = aiResponse;
+                history.appendChild(aiMsg);
+                history.scrollTop = history.scrollHeight;
+            } catch (err) {
+                loading.classList.add('hidden');
+                showToast('AI 聊天連線失敗。');
+            }
+        }
 
         function toggleModal(show) {
             document.getElementById('storeModal').classList.toggle('modal-active', show);
@@ -361,81 +449,7 @@
             document.getElementById('aiChat').classList.toggle('chat-active', show);
         }
 
-        async function callGemini(prompt, systemInstruction = "") {
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-            const payload = {
-                contents: [{ parts: [{ text: prompt }] }],
-                systemInstruction: { parts: [{ text: systemInstruction }] }
-            };
-
-            for (let i = 0; i < 5; i++) {
-                try {
-                    const response = await fetch(url, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    if (!response.ok) throw new Error('API Error');
-                    const data = await response.json();
-                    return data.candidates?.[0]?.content?.parts?.[0]?.text;
-                } catch (e) {
-                    if (i === 4) return null;
-                    await new Promise(r => setTimeout(r, Math.pow(2, i) * 1000));
-                }
-            }
-        }
-
-        async function sendMessage() {
-            const input = document.getElementById('userInput');
-            const history = document.getElementById('chatHistory');
-            const loading = document.getElementById('chatLoading');
-            const text = input.value.trim();
-            if (!text) return;
-
-            const userMsg = document.createElement('div');
-            userMsg.className = "ml-auto bg-brand-orange text-white p-4 rounded-3xl rounded-tr-none text-sm max-w-[85%] shadow-md";
-            userMsg.innerText = text;
-            history.appendChild(userMsg);
-            input.value = "";
-            history.scrollTop = history.scrollHeight;
-
-            loading.classList.remove('hidden');
-
-            const systemPrompt = `你是一位專業親切的健康管家，服務於「京簡康」。請從菜單中為使用者推薦：${JSON.stringify(menuData)}。語氣專業、簡短。`;
-
-            try {
-                const aiResponse = await callGemini(text, systemPrompt);
-                loading.classList.add('hidden');
-                const aiMsg = document.createElement('div');
-                aiMsg.className = "bg-white border border-slate-100 p-4 rounded-3xl rounded-tl-none text-slate-700 shadow-sm leading-relaxed max-w-[85%]";
-                aiMsg.innerText = aiResponse || "抱歉，請稍後再試。";
-                history.appendChild(aiMsg);
-                history.scrollTop = history.scrollHeight;
-            } catch (err) {
-                loading.classList.add('hidden');
-            }
-        }
-
-        async function playMealAudio(name, description) {
-            const textToSay = `介紹：${name}。${description}`;
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
-            const payload = {
-                contents: [{ parts: [{ text: `親切地唸出：${textToSay}` }] }],
-                generationConfig: { responseModalities: ["AUDIO"], speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: "Aoede" } } } },
-                model: "gemini-2.5-flash-preview-tts"
-            };
-            try {
-                const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-                const result = await response.json();
-                const pcmData = result.candidates[0].content.parts[0].inlineData.data;
-                const pcmBlob = Uint8Array.from(atob(pcmData), c => c.charCodeAt(0));
-                const wavHeader = new ArrayBuffer(44);
-                const view = new DataView(wavHeader);
-                view.setUint32(0, 0x52494646, false); view.setUint32(4, 36 + pcmBlob.length, true); view.setUint32(8, 0x57415645, false); view.setUint32(12, 0x666d7420, false); view.setUint32(16, 16, true); view.setUint16(20, 1, true); view.setUint16(22, 1, true); view.setUint32(24, 24000, true); view.setUint32(28, 48000, true); view.setUint16(32, 2, true); view.setUint16(34, 16, true); view.setUint32(36, 0x64617461, false); view.setUint32(40, pcmBlob.length, true);
-                const audio = new Audio(URL.createObjectURL(new Blob([wavHeader, pcmBlob], { type: 'audio/wav' })));
-                audio.play();
-            } catch (err) {}
-        }
+        document.addEventListener('DOMContentLoaded', renderMenu);
     </script>
 </body>
 </html>
