@@ -95,7 +95,7 @@
         @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
 
         /* 吉祥物浮動動畫 */
-        .mascot-float { animation: floating Mascots 3s ease-in-out infinite; }
+        .mascot-float { animation: floating 3s ease-in-out infinite; }
         @keyframes floating { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
     </style>
 </head>
@@ -156,23 +156,26 @@
                 </div>
             </div>
 
-            <!-- 核心價值區塊搭配吉祥物裝飾 -->
+            <!-- 核心價值區塊搭配「鮮豔清晰」的吉祥物 -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="p-12 bg-slate-50 rounded-[3.5rem] text-center border border-slate-100 transition-all hover:border-brand-orange group shadow-sm relative overflow-hidden">
-                    <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-06.png" class="absolute -right-6 -bottom-6 h-32 w-auto opacity-10 group-hover:opacity-40 transition-opacity duration-500" alt="Mascot Deco 1">
-                    <div class="text-6xl font-black text-brand-orange mb-8 group-hover:scale-110 transition-transform">京</div>
+                <div class="p-12 bg-slate-50 rounded-[3.5rem] text-center border border-slate-100 transition-all hover:border-brand-orange group shadow-sm flex flex-col items-center">
+                    <!-- 吉祥物 06 - 鮮豔清晰呈現 -->
+                    <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-06.png" class="h-32 w-auto mb-6 mascot-float drop-shadow-md" alt="Jing Mascot">
+                    <div class="text-6xl font-black text-brand-orange mb-6 group-hover:scale-110 transition-transform">京</div>
                     <h4 class="text-xl font-bold mb-4 text-slate-800 tracking-widest uppercase">最上級</h4>
                     <p class="text-slate-500 text-sm leading-relaxed">代表最頂尖的選擇，提倡原形食材、安心健康。</p>
                 </div>
-                <div class="p-12 bg-slate-50 rounded-[3.5rem] text-center border border-slate-100 transition-all hover:border-brand-orange group shadow-sm relative overflow-hidden">
-                    <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-05.png" class="absolute -right-6 -bottom-6 h-32 w-auto opacity-10 group-hover:opacity-40 transition-opacity duration-500" alt="Mascot Deco 2">
-                    <div class="text-6xl font-black text-brand-orange mb-8 group-hover:scale-110 transition-transform">簡</div>
+                <div class="p-12 bg-slate-50 rounded-[3.5rem] text-center border border-slate-100 transition-all hover:border-brand-orange group shadow-sm flex flex-col items-center">
+                    <!-- 吉祥物 05 - 鮮豔清晰呈現 -->
+                    <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-05.png" class="h-32 w-auto mb-6 mascot-float drop-shadow-md" alt="Jian Mascot">
+                    <div class="text-6xl font-black text-brand-orange mb-6 group-hover:scale-110 transition-transform">簡</div>
                     <h4 class="text-xl font-bold mb-4 text-slate-800 tracking-widest uppercase">簡單原味</h4>
                     <p class="text-slate-500 text-sm leading-relaxed">簡單調味不繁瑣，讓您吃得到食材最真實的味道。</p>
                 </div>
-                <div class="p-12 bg-slate-50 rounded-[3.5rem] text-center border border-slate-100 transition-all hover:border-brand-orange group shadow-sm relative overflow-hidden">
-                    <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-07.png" class="absolute -right-6 -bottom-6 h-32 w-auto opacity-10 group-hover:opacity-40 transition-opacity duration-500" alt="Mascot Deco 3">
-                    <div class="text-6xl font-black text-brand-orange mb-8 group-hover:scale-110 transition-transform">康</div>
+                <div class="p-12 bg-slate-50 rounded-[3.5rem] text-center border border-slate-100 transition-all hover:border-brand-orange group shadow-sm flex flex-col items-center">
+                    <!-- 吉祥物 07 - 鮮豔清晰呈現 -->
+                    <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-07.png" class="h-32 w-auto mb-6 mascot-float drop-shadow-md" alt="Kang Mascot">
+                    <div class="text-6xl font-black text-brand-orange mb-6 group-hover:scale-110 transition-transform">康</div>
                     <h4 class="text-xl font-bold mb-4 text-slate-800 tracking-widest uppercase">更健康</h4>
                     <p class="text-slate-500 text-sm leading-relaxed">透過均衡營養與專業烹調，讓享用餐點成為健康的來源。</p>
                 </div>
