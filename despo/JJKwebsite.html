@@ -87,20 +87,16 @@
     <section id="about" class="py-24 bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20 relative">
-                <!-- 康妹與京哥伴隨品牌故事 -->
                 <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-09.png" class="hidden lg:block absolute -left-10 top-0 h-48 w-auto mascot-float opacity-90" alt="康妹">
                 <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-04.png" class="hidden lg:block absolute -right-10 top-0 h-48 w-auto mascot-float opacity-90" alt="京哥">
-
                 <p class="text-brand-orange font-medium tracking-[0.4em] mb-4 uppercase">忙碌生活，是否忘了好好照顧自己？</p>
                 <h1 class="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight">京選食材，簡單純粹</h1>
                 <div class="w-24 h-1.5 bg-brand-orange mx-auto rounded-full mb-10"></div>
-                
                 <div class="max-w-3xl mx-auto space-y-6">
                     <h2 class="text-2xl md:text-3xl font-bold text-slate-800 tracking-widest">關於京簡康</h2>
                     <p class="text-slate-600 text-lg leading-loose font-light">想擁有『好吃、健康、無負擔』美味餐點？<br><span class="text-brand-orange font-bold tracking-widest">京簡康 - 健康新餐食</span> 為此而生。</p>
                 </div>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <div class="p-12 bg-slate-50 rounded-[3.5rem] text-center border border-slate-100 transition-all hover:border-brand-orange group shadow-sm flex flex-col items-center">
                     <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-06.png" class="h-32 w-auto mb-6 mascot-float drop-shadow-md" alt="京哥">
@@ -124,7 +120,7 @@
         </div>
     </section>
 
-    <!-- 影片區 -->
+    <!-- 形象影片 -->
     <section id="video" class="py-24 bg-slate-100">
         <div class="max-w-5xl mx-auto px-4">
             <div class="video-container shadow-2xl bg-black">
@@ -133,7 +129,7 @@
         </div>
     </section>
 
-    <!-- 餐盒選單 -->
+    <!-- 特色餐點 -->
     <section id="menu" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -149,7 +145,7 @@
     <section id="locations" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-12 tracking-wider uppercase">服務據點</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left" id="storeContainer">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
                 <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-200 hover:border-brand-orange transition-colors">
                     <h3 class="text-2xl font-bold text-brand-orange mb-4 text-center">台北延平店</h3>
                     <p class="text-slate-600 text-sm mb-2 text-center">📍 台北市中正區延平南路171巷1號</p>
@@ -203,7 +199,7 @@
         </div>
         <div class="p-5 bg-white border-t flex gap-3">
             <input id="userInput" type="text" placeholder="推薦低熱量的餐盒..." class="flex-grow bg-slate-100 rounded-2xl px-5 py-3 text-sm focus:ring-2 focus:ring-brand-orange outline-none">
-            <button onclick="sendMessage()" class="bg-brand-orange text-white w-12 h-12 rounded-2xl flex items-center shadow-lg active:scale-95 transition-all">
+            <button onclick="sendMessage()" class="bg-brand-orange text-white w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg active:scale-95 transition-all">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
             </button>
         </div>
@@ -212,47 +208,54 @@
     <!-- 提示框 -->
     <div id="toast">訊息</div>
 
-    <!-- 頁尾 (質感強化社群圖示) -->
+    <!-- 頁尾 (簡約佈局：移除背景公仔浮水印) -->
     <footer class="bg-brand-dark text-white py-24 text-center relative overflow-hidden">
-        <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-04.png" class="absolute -left-10 bottom-0 h-56 w-auto mascot-float drop-shadow-2xl z-0" alt="京哥">
-        <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-09.png" class="absolute -right-10 bottom-0 h-56 w-auto mascot-float drop-shadow-2xl z-0" alt="康妹">
+        
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <!-- 核心五位一體橫排：京哥 - FB - Logo - Line - 康妹 -->
+            <div class="flex flex-row items-center justify-center gap-2 sm:gap-6 md:gap-12 lg:gap-16 mb-16">
+                
+                <!-- 1. 京哥 -->
+                <div class="flex flex-col items-center shrink-0">
+                    <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-04.png" class="h-16 sm:h-20 md:h-28 w-auto mascot-float drop-shadow-lg" alt="京哥">
+                    <p class="hidden sm:block text-[10px] font-bold text-slate-400 mt-2 tracking-widest">京哥</p>
+                </div>
 
-        <div class="mb-12 flex flex-col items-center relative z-10">
-            <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-LOGO-給廠商-03.png" alt="Logo" class="h-24 w-auto brightness-0 invert opacity-90 object-contain mb-8">
-            <div class="flex gap-10 mb-12 items-center">
-                <div class="text-center"><img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-04.png" class="h-20 w-auto drop-shadow-lg mx-auto" alt="Jing Ge"><p class="text-[10px] mt-2 font-bold text-slate-400 uppercase tracking-widest">京哥 Jing Ge</p></div>
-                <div class="text-center"><img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-09.png" class="h-20 w-auto drop-shadow-lg mx-auto" alt="Kang Mei"><p class="text-[10px] mt-2 font-bold text-slate-400 uppercase tracking-widest">康妹 Kang Mei</p></div>
+                <!-- 2. FB 粉絲團 -->
+                <a href="https://www.facebook.com/JingJianKang2021" target="_blank" class="group flex flex-col items-center shrink-0">
+                    <div class="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center transition-all duration-500 bg-gradient-to-br from-[#1877F2] to-[#0A52B5] hover:scale-110 shadow-lg group-hover:shadow-[0_0_20px_rgba(24,119,242,0.5)]">
+                        <svg class="w-5 h-5 sm:w-7 sm:h-7 fill-white" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.597 0 0 .597 0 1.325v21.351C0 23.403.597 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.728 0 1.325-.597 1.325-1.325V1.325C24 .597 23.403 0 22.675 0z"/></svg>
+                    </div>
+                    <span class="hidden md:block text-[10px] font-black text-slate-500 mt-3 tracking-tighter group-hover:text-white transition-colors">FACEBOOK</span>
+                </a>
+
+                <!-- 3. 中央 Logo -->
+                <div class="shrink-0 px-2 sm:px-4">
+                    <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-LOGO-給廠商-03.png" alt="Logo" class="h-10 sm:h-16 md:h-24 w-auto brightness-0 invert opacity-95 object-contain">
+                </div>
+
+                <!-- 4. LINE 官方 -->
+                <a href="https://lin.ee/5qgDoSu" target="_blank" class="group flex flex-col items-center shrink-0">
+                    <div class="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center transition-all duration-500 bg-gradient-to-br from-[#06C755] to-[#059F44] hover:scale-110 shadow-lg group-hover:shadow-[0_0_20px_rgba(6,199,85,0.4)]">
+                        <svg class="w-6 h-6 sm:w-8 sm:h-8 fill-white" viewBox="0 0 24 24"><path d="M24 10.304c0-4.369-5.383-7.904-12-7.904s-12 3.535-12 7.904c0 3.921 4.279 7.21 10.074 7.853.392.081.926.258 1.054.592.146.381.096.975.046 1.358l-.198 1.202c-.061.363-.284 1.419 1.22 0.775 1.504-.644 8.125-4.782 11.077-8.182 1.516-1.742 2.727-3.704 2.727-5.6z"/></svg>
+                    </div>
+                    <span class="hidden md:block text-[10px] font-black text-slate-500 mt-3 tracking-tighter group-hover:text-white transition-colors">LINE</span>
+                </a>
+
+                <!-- 5. 康妹 -->
+                <div class="flex flex-col items-center shrink-0">
+                    <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-09.png" class="h-16 sm:h-20 md:h-28 w-auto mascot-float drop-shadow-lg" alt="康妹">
+                    <p class="hidden sm:block text-[10px] font-bold text-slate-400 mt-2 tracking-widest">康妹</p>
+                </div>
+
+            </div>
+
+            <!-- 標語與版權 -->
+            <div class="pt-8 border-t border-white/5">
+                <p class="text-brand-orange text-sm font-bold tracking-[0.4em] mb-4 uppercase">京簡康 - 健康新餐食</p>
+                <p class="text-slate-600 text-[10px] tracking-widest uppercase">© 2024 JING JIAN KANG. All Rights Reserved.</p>
             </div>
         </div>
-
-        <!-- 質感強化：立體圓形漸層社群按鈕 -->
-        <div class="flex justify-center space-x-12 mb-16 relative z-10">
-            <!-- FB 立體漸層按鈕 -->
-            <a href="https://www.facebook.com/JingJianKang2021" target="_blank" class="group flex flex-col items-center gap-3">
-                <div class="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-500 shadow-lg relative overflow-hidden bg-gradient-to-br from-[#1877F2] to-[#0A52B5] group-hover:scale-110 group-hover:shadow-[0_0_25px_rgba(24,119,242,0.6)]">
-                    <!-- 反光效果 -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-white/0 to-white/20 opacity-50"></div>
-                    <svg class="w-8 h-8 fill-white relative z-10" viewBox="0 0 24 24">
-                        <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.325v21.351C0 23.403.597 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.728 0 1.325-.597 1.325-1.325V1.325C24 .597 23.403 0 22.675 0z"/>
-                    </svg>
-                </div>
-                <span class="text-[11px] font-black text-slate-400 tracking-[0.2em] group-hover:text-white transition-colors duration-300">FB 粉絲團</span>
-            </a>
-            <!-- Line 立體漸層按鈕 -->
-            <a href="https://lin.ee/5qgDoSu" target="_blank" class="group flex flex-col items-center gap-3">
-                <div class="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-500 shadow-lg relative overflow-hidden bg-gradient-to-br from-[#06C755] to-[#059F44] group-hover:scale-110 group-hover:shadow-[0_0_25px_rgba(6,199,85,0.5)]">
-                    <!-- 反光效果 -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-white/0 to-white/20 opacity-50"></div>
-                    <svg class="w-9 h-9 fill-white relative z-10" viewBox="0 0 24 24">
-                        <path d="M24 10.304c0-4.369-5.383-7.904-12-7.904s-12 3.535-12 7.904c0 3.921 4.279 7.21 10.074 7.853.392.081.926.258 1.054.592.146.381.096.975.046 1.358l-.198 1.202c-.061.363-.284 1.419 1.22 0.775 1.504-.644 8.125-4.782 11.077-8.182 1.516-1.742 2.727-3.704 2.727-5.6z"/>
-                    </svg>
-                </div>
-                <span class="text-[11px] font-black text-slate-400 tracking-[0.2em] group-hover:text-white transition-colors duration-300">LINE 官方</span>
-            </a>
-        </div>
-
-        <p class="text-brand-orange text-base font-bold tracking-[0.4em] mb-6 uppercase">京簡康 - 健康新餐食</p>
-        <p class="text-slate-500 text-[10px] tracking-widest uppercase mb-12">© 2024 JING JIAN KANG. All Rights Reserved.</p>
     </footer>
 
     <script>
