@@ -4,26 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 安全強化：導入內容安全政策 (CSP) -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; video-src 'self' https:; connect-src 'self' https://script.google.com https://script.googleusercontent.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' https: data:; media-src 'self' https: blob:; script-src 'self' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://script.google.com https://script.googleusercontent.com; form-action 'self'; upgrade-insecure-requests;">
     
     <title>京簡康 | 專業健康餐盒 - 健康・新餐食</title>
+    <script src="tailwind-config.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            orange: '#E87033', // 美味橘
-                            yellow: '#E38827', // 金葉黃
-                            dark: '#2D2926',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="JJKwebsite.js" defer></script>
     <style>
         body { font-family: 'Noto Sans TC', sans-serif; scroll-behavior: smooth; }
         .hero-bg {
@@ -67,14 +54,14 @@
                     <a href="#about" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">品牌理念</a>
                     <a href="#video" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">形象影片</a>
                     <a href="#menu" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">特色餐盒</a>
-                    <button onclick="openAIChat()" class="text-brand-orange hover:text-brand-yellow font-bold transition-colors flex items-center gap-2">
+                    <button id="openAiChatButton" type="button" class="text-brand-orange hover:text-brand-yellow font-bold transition-colors flex items-center gap-2">
                         <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-04.png" class="h-10 w-auto" alt="京哥">
                         京哥助你選餐
                     </button>
                     <a href="#locations" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">服務據點</a>
                 </div>
                 <!-- 點擊觸發點餐彈窗 -->
-                <button onclick="toggleModal(true)" class="btn-primary text-white px-8 py-3 rounded-full font-bold transition-all shadow-md active:scale-95 text-sm md:text-base">
+                <button id="openStoreModalButton" type="button" class="btn-primary text-white px-8 py-3 rounded-full font-bold transition-all shadow-md active:scale-95 text-sm md:text-base">
                     線上點餐
                 </button>
             </div>
@@ -152,7 +139,7 @@
                     <p class="text-slate-600 text-sm mb-2">📍 台北市中正區延平南路171巷1號</p>
                     <p class="text-slate-600 text-sm mb-8">📞 02-2331-5166</p>
                     <div class="flex gap-3">
-                        <a href="https://reurl.cc/E4peRK" target="_blank" class="flex-[1.5] py-3 btn-primary text-white rounded-xl text-xs font-bold text-center">立即訂餐</a>
+                        <a href="https://reurl.cc/E4peRK" target="_blank" rel="noopener noreferrer" class="flex-[1.5] py-3 btn-primary text-white rounded-xl text-xs font-bold text-center">立即訂餐</a>
                     </div>
                 </div>
                 <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-200 hover:border-brand-orange transition-colors text-center">
@@ -160,7 +147,7 @@
                     <p class="text-slate-600 text-sm mb-2">📍 台北市中山區伊通街109之2號</p>
                     <p class="text-slate-600 text-sm mb-8">📞 02-2507-9662</p>
                     <div class="flex gap-3">
-                        <a href="https://reurl.cc/yYQGMO" target="_blank" class="flex-[1.5] py-3 btn-primary text-white rounded-xl text-xs font-bold text-center">立即訂餐</a>
+                        <a href="https://reurl.cc/yYQGMO" target="_blank" rel="noopener noreferrer" class="flex-[1.5] py-3 btn-primary text-white rounded-xl text-xs font-bold text-center">立即訂餐</a>
                     </div>
                 </div>
                 <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-200 hover:border-brand-orange transition-colors text-center">
@@ -168,7 +155,7 @@
                     <p class="text-slate-600 text-sm mb-2">📍 新北市三峽區學成路250號</p>
                     <p class="text-slate-600 text-sm mb-8">📞 02-2673-6012</p>
                     <div class="flex gap-3">
-                        <a href="https://ddc.ai/1bblEe" target="_blank" class="flex-[1.5] py-3 btn-primary text-white rounded-xl text-xs font-bold text-center">立即訂餐</a>
+                        <a href="https://ddc.ai/1bblEe" target="_blank" rel="noopener noreferrer" class="flex-[1.5] py-3 btn-primary text-white rounded-xl text-xs font-bold text-center">立即訂餐</a>
                     </div>
                 </div>
             </div>
@@ -183,19 +170,19 @@
                 <p class="text-sm opacity-90 mt-2 tracking-widest">選取後將導往線上點餐系統</p>
             </div>
             <div class="p-8 space-y-4">
-                <button onclick="window.open('https://reurl.cc/E4peRK', '_blank'); toggleModal(false);" class="w-full py-5 bg-slate-50 hover:bg-brand-orange hover:text-white rounded-2xl font-bold text-slate-700 transition-all border border-slate-100 flex items-center justify-center gap-3 group">
+                <button type="button" data-open-url="https://reurl.cc/E4peRK" class="store-link-button w-full py-5 bg-slate-50 hover:bg-brand-orange hover:text-white rounded-2xl font-bold text-slate-700 transition-all border border-slate-100 flex items-center justify-center gap-3 group">
                     <span>台北延平店</span>
                     <svg class="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </button>
-                <button onclick="window.open('https://reurl.cc/yYQGMO', '_blank'); toggleModal(false);" class="w-full py-5 bg-slate-50 hover:bg-brand-orange hover:text-white rounded-2xl font-bold text-slate-700 transition-all border border-slate-100 flex items-center justify-center gap-3 group">
+                <button type="button" data-open-url="https://reurl.cc/yYQGMO" class="store-link-button w-full py-5 bg-slate-50 hover:bg-brand-orange hover:text-white rounded-2xl font-bold text-slate-700 transition-all border border-slate-100 flex items-center justify-center gap-3 group">
                     <span>台北伊通店</span>
                     <svg class="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </button>
-                <button onclick="window.open('https://ddc.ai/1bblEe', '_blank'); toggleModal(false);" class="w-full py-5 bg-slate-50 hover:bg-brand-orange hover:text-white rounded-2xl font-bold text-slate-700 transition-all border border-slate-100 flex items-center justify-center gap-3 group">
+                <button type="button" data-open-url="https://ddc.ai/1bblEe" class="store-link-button w-full py-5 bg-slate-50 hover:bg-brand-orange hover:text-white rounded-2xl font-bold text-slate-700 transition-all border border-slate-100 flex items-center justify-center gap-3 group">
                     <span>三峽北大店</span>
                     <svg class="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </button>
-                <button onclick="toggleModal(false)" class="w-full py-4 text-slate-400 font-medium hover:text-slate-600 transition-colors text-sm">取消點餐</button>
+                <button id="closeStoreModalButton" type="button" class="w-full py-4 text-slate-400 font-medium hover:text-slate-600 transition-colors text-sm">取消點餐</button>
             </div>
         </div>
     </div>
@@ -207,7 +194,7 @@
                 <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-04.png" class="h-12 w-auto drop-shadow-md" alt="京哥">
                 <span class="font-bold">營養管家「京哥」</span>
             </div>
-            <button onclick="openAIChat(false)" class="text-3xl leading-none">&times;</button>
+            <button id="closeAiChatButton" type="button" class="text-3xl leading-none">&times;</button>
         </div>
         <div id="chatHistory" class="flex-grow p-5 overflow-y-auto bg-slate-50 space-y-4 text-sm scroll-smooth">
             <div class="flex gap-3">
@@ -224,8 +211,8 @@
             </div>
         </div>
         <div class="p-5 bg-white border-t flex gap-3">
-            <input id="userInput" type="text" placeholder="推薦低熱量的餐盒..." class="flex-grow bg-slate-100 rounded-2xl px-5 py-3 text-sm focus:ring-2 focus:ring-brand-orange outline-none">
-            <button onclick="sendMessage()" class="bg-brand-orange text-white w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg active:scale-95 transition-all">
+            <input id="userInput" type="text" maxlength="300" autocomplete="off" placeholder="推薦低熱量的餐盒..." class="flex-grow bg-slate-100 rounded-2xl px-5 py-3 text-sm focus:ring-2 focus:ring-brand-orange outline-none">
+            <button id="sendMessageButton" type="button" class="bg-brand-orange text-white w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg active:scale-95 transition-all">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
             </button>
         </div>
@@ -244,7 +231,7 @@
                     <p class="hidden sm:block text-[10px] font-bold text-slate-400 mt-2 tracking-widest">京哥</p>
                 </div>
                 <!-- 2. FB 粉絲團 -->
-                <a href="https://www.facebook.com/JingJianKang2021" target="_blank" class="group flex flex-col items-center shrink-0">
+                <a href="https://www.facebook.com/JingJianKang2021" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center shrink-0">
                     <div class="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center transition-all duration-500 bg-gradient-to-br from-[#1877F2] to-[#0A52B5] hover:scale-110 shadow-lg group-hover:shadow-[0_0_20px_rgba(24,119,242,0.5)]">
                         <svg class="w-5 h-5 sm:w-7 sm:h-7 fill-white" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.597 0 0 .597 0 1.325v21.351C0 23.403.597 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.728 0 1.325-.597 1.325-1.325V1.325C24 .597 23.403 0 22.675 0z"/></svg>
                     </div>
@@ -255,7 +242,7 @@
                     <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-LOGO-給廠商-03.png" alt="Logo" class="h-10 sm:h-16 md:h-24 w-auto brightness-0 invert opacity-95 object-contain">
                 </div>
                 <!-- 4. LINE 官方 -->
-                <a href="https://lin.ee/5qgDoSu" target="_blank" class="group flex flex-col items-center shrink-0">
+                <a href="https://lin.ee/5qgDoSu" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center shrink-0">
                     <div class="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center transition-all duration-500 bg-gradient-to-br from-[#06C755] to-[#059F44] hover:scale-110 shadow-lg group-hover:shadow-[0_0_20px_rgba(6,199,85,0.4)]">
                         <svg class="w-6 h-6 sm:w-8 sm:h-8 fill-white" viewBox="0 0 24 24"><path d="M24 10.304c0-4.369-5.383-7.904-12-7.904s-12 3.535-12 7.904c0 3.921 4.279 7.21 10.074 7.853.392.081.926.258 1.054.592.146.381.096.975.046 1.358l-.198 1.202c-.061.363-.284 1.419 1.22 0.775 1.504-.644 8.125-4.782 11.077-8.182 1.516-1.742 2.727-3.704 2.727-5.6z"/></svg>
                     </div>
@@ -274,139 +261,6 @@
         </div>
     </footer>
 
-    <script>
-        const SECURITY_TOKEN = "JJK_SECURE_888"; 
-        const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzDdDOHTXsUke8Hh5ZuKZeeP5mZimzlgssb_5KPMeYaqBrlKVjhtqSeCcFebZfyPYDMNA/exec"; 
-
-        const menuData = [
-            { id: 1, name: "香魯牛腱餐盒", price: 170, desc: "精選十三香滷包，慢火燉煮牛腱，濃郁風味，層次分明。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/香魯牛煎餐盒-去番茄.png" },
-            { id: 2, name: "焙煎胡麻肉片餐盒", price: 115, desc: "嚴選日式焙煎胡麻醬，香味濃郁，搭配豬肉片。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/焙煎胡麻肉片餐盒-去番茄.png" },
-            { id: 3, name: "蔥鹽雞胸餐盒", price: 135, desc: "雙油淬煉紅蔥油與橄欖油黃金比例，搭配新鮮青蔥，爽脆蔥油香。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/蔥鹽雞胸-外帶.jpg" },
-            { id: 4, name: "烤檸檬鮭魚餐盒", price: 199, desc: "鮭魚肉含高蛋白質，蒸烤後皮酥肉嫩，外酥內軟。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/烤檸檬鮭魚餐盒-去番茄.png" },
-            { id: 5, name: "日式烤雞腿餐盒", price: 170, desc: "去骨雞腿刷上日式醬料，烤至金黃焦香，吮指美味。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/日式烤雞腿餐盒-去番茄.png" },
-            { id: 6, name: "烤雪霜肉餐盒", price: 160, desc: "雪霜肉油花均勻口感Q彈，撒上玫瑰鹽簡單原味。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/烤雪霜肉餐盒-去番茄.png" },
-            { id: 7, name: "香烤桔汁里肌餐盒", price: 145, desc: "上選里肌刷上獨家桔汁，蒸烤後清爽甜香。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/香烤桔汁里肌餐盒-去番茄.png" },
-            { id: 8, name: "烤挪威鯖魚餐盒", price: 145, desc: "挪威鯖魚油脂豐厚，鹹香細緻。高品質魚肉。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/烤挪威鯖魚餐盒-去番茄.png" },
-            { id: 9, name: "韓式泡菜雞胸餐盒", price: 135, desc: "低溫蒸煮雞胸搭配韓式泡菜，脆口清爽低負擔。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/韓式泡菜雞胸餐盒-去番茄.png" },
-            { id: 10, name: "壽喜燒豚肉片餐盒", price: 125, desc: "汆燙軟嫩豬肉片淋上日式壽喜燒醬。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/壽喜燒豚肉片餐盒-去番茄.png" },
-            { id: 11, name: "黑胡椒嫩雞胸餐盒", price: 135, desc: "新鮮雞胸以低溫蒸煮熟化，保留肉質鮮嫩。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/黑胡椒嫩雞胸餐盒-去番茄.png" },
-            { id: 12, name: "經典豬雞妙算餐盒", price: 135, desc: "胡麻豬肉片與黑胡椒香嫩雞胸雙饗組合。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/經典豬雞妙算餐盒-去番茄.png" }
-        ];
-
-        function showToast(msg) {
-            const t = document.getElementById("toast");
-            t.textContent = msg; t.className = "show";
-            setTimeout(() => { t.className = ""; }, 3000);
-        }
-
-        function renderMenu() {
-            const container = document.getElementById('mealContainer');
-            if (!container) return;
-            container.innerHTML = '';
-            menuData.forEach(meal => {
-                const card = document.createElement('div');
-                card.className = "menu-card bg-white rounded-[3rem] overflow-hidden border border-slate-100 flex flex-col h-full shadow-sm relative group";
-                
-                const ttsBtn = document.createElement('button');
-                ttsBtn.className = "absolute top-5 right-5 bg-white/90 hover:bg-brand-orange hover:text-white text-brand-orange w-11 h-11 rounded-full flex items-center justify-center shadow-lg z-10 transition-all active:scale-90";
-                ttsBtn.textContent = "✨";
-                ttsBtn.onclick = () => callGAS(ttsBtn, 'tts', `${meal.name}。特色是：${meal.desc}`);
-
-                const imgContainer = document.createElement('div');
-                imgContainer.className = "h-64 bg-slate-50 flex items-center justify-center p-8 overflow-hidden";
-                const img = document.createElement('img');
-                img.src = meal.img;
-                img.className = "max-h-full max-w-full object-contain product-img transition-transform duration-700 group-hover:scale-110";
-                imgContainer.appendChild(img);
-
-                const content = document.createElement('div');
-                content.className = "p-10 flex-grow flex flex-col border-t border-slate-50 text-center";
-                content.innerHTML = `<div class="flex justify-between items-center mb-4"><h3 class="text-xl font-bold text-slate-900">${meal.name}</h3><span class="text-brand-orange font-bold text-xl">$${meal.price}</span></div><p class="text-slate-500 text-lg leading-relaxed font-light">${meal.desc}</p>`;
-
-                card.appendChild(ttsBtn); card.appendChild(imgContainer); card.appendChild(content);
-                container.appendChild(card);
-            });
-        }
-
-        async function sendMessage() {
-            const input = document.getElementById('userInput');
-            const history = document.getElementById('chatHistory');
-            const loading = document.getElementById('chatLoading');
-            const text = input.value.trim();
-            if (!text) return;
-
-            const userBox = document.createElement('div');
-            userBox.className = "ml-auto bg-brand-orange text-white p-4 rounded-3xl rounded-tr-none text-sm max-w-[85%] shadow-md";
-            userBox.textContent = text;
-            history.appendChild(userBox);
-            
-            input.value = "";
-            loading.classList.remove('hidden');
-            history.scrollTop = history.scrollHeight;
-
-            const aiResponse = await callGAS(loading, 'chat', text);
-            loading.classList.add('hidden');
-            
-            const aiBox = document.createElement('div');
-            aiBox.className = "flex gap-3";
-            const aiAvatar = document.createElement('img');
-            aiAvatar.src = "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-04.png";
-            aiAvatar.className = "h-10 w-10 rounded-full bg-orange-100 p-1 object-contain";
-            const aiTextWrapper = document.createElement('div');
-            aiTextWrapper.className = "bg-white border p-4 rounded-3xl rounded-tl-none text-slate-700 max-w-[85%] shadow-sm leading-relaxed";
-            aiTextWrapper.textContent = aiResponse; 
-            
-            aiBox.appendChild(aiAvatar); aiBox.appendChild(aiTextWrapper);
-            history.appendChild(aiBox);
-            history.scrollTop = history.scrollHeight;
-        }
-
-        async function callGAS(element, action, text) {
-            const isBtn = element.tagName === 'BUTTON';
-            if (isBtn && element.classList.contains('ai-loading')) return;
-            if (isBtn) element.classList.add('ai-loading');
-            try {
-                const response = await fetch(GAS_WEB_APP_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ action, text, menuData, token: SECURITY_TOKEN, userId: "visitor_888" })
-                });
-                const result = await response.json();
-                if (result.error) throw new Error(result.error);
-                if (action === 'tts') {
-                    const pcmData = result.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
-                    const pcmBlob = Uint8Array.from(atob(pcmData), c => c.charCodeAt(0));
-                    const wavHeader = new ArrayBuffer(44);
-                    const view = new DataView(wavHeader);
-                    view.setUint32(0, 0x52494646, false); view.setUint32(4, 36 + pcmBlob.length, true); view.setUint32(8, 0x57415645, false); view.setUint32(12, 0x666d7420, false); view.setUint16(20, 1, true); view.setUint16(22, 1, true); view.setUint32(24, 24000, true); view.setUint32(28, 48000, true); view.setUint16(32, 2, true); view.setUint16(34, 16, true); view.setUint32(36, 0x64617461, false); view.setUint32(40, pcmBlob.length, true);
-                    const audio = new Audio(URL.createObjectURL(new Blob([wavHeader, pcmBlob], { type: 'audio/wav' })));
-                    audio.onended = () => element.classList.remove('ai-loading');
-                    await audio.play();
-                } else return result.candidates?.[0]?.content?.parts?.[0]?.text || "暫時無法回覆。";
-            } catch (err) {
-                if (isBtn) element.classList.remove('ai-loading');
-                showToast("連線失敗，請稍後再試。");
-                return "系統繁忙中。";
-            }
-        }
-
-        function openAIChat(show = true) { document.getElementById('aiChat').classList.toggle('chat-active', show); }
-        
-        // 切換門市選擇彈窗
-        function toggleModal(show) { 
-            const modal = document.getElementById('storeModal');
-            if (show) {
-                modal.classList.remove('hidden');
-                modal.classList.add('modal-active');
-            } else {
-                modal.classList.add('hidden');
-                modal.classList.remove('modal-active');
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            renderMenu();
-        });
-    </script>
+    
 </body>
 </html>
