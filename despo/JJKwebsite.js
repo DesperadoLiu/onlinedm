@@ -325,7 +325,9 @@ async function callGAS(element, action, text) {
         if (result.error) throw new Error(result.error);
 
         if (action === 'tts') {
-            const pcmData = result.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
+            const parts = result.candidates?.[0]?.content?.parts;
+            const audioPart = Array.isArray(parts) ? parts.find((part) => part?.inlineData?.data) : null;
+            const pcmData = audioPart?.inlineData?.data;
             if (!pcmData) throw new Error('Missing audio payload');
 
             const pcmBlob = Uint8Array.from(atob(pcmData), (char) => char.charCodeAt(0));
