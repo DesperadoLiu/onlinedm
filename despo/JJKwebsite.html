@@ -25,7 +25,7 @@
     <style>
         body { font-family: 'Noto Sans TC', sans-serif; scroll-behavior: smooth; }
         
-        /* 移除遮罩與文字，保持圖片最原始的透亮質感 */
+        /* 保持首頁圖片清透亮麗 */
         .hero-bg {
             background: url('https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/JJK-視覺照3去番茄.jpg');
             background-size: cover;
@@ -93,6 +93,10 @@
         #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
         @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
         @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
+
+        /* 吉祥物浮動動畫 */
+        .mascot-float { animation: floating Mascots 3s ease-in-out infinite; }
+        @keyframes floating { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -110,8 +114,9 @@
                     <a href="#about" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">品牌理念</a>
                     <a href="#video" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">形象影片</a>
                     <a href="#menu" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">特色餐盒</a>
-                    <button onclick="openAIChat()" class="text-brand-orange hover:text-brand-yellow font-bold transition-colors flex items-center gap-1">
-                        ✨ AI 智能營養管家
+                    <button onclick="openAIChat()" class="text-brand-orange hover:text-brand-yellow font-bold transition-colors flex items-center gap-2">
+                        <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-04.png" class="h-10 w-auto" alt="AI Butler Mascot">
+                        AI 營養管家
                     </button>
                     <a href="#locations" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">服務據點</a>
                 </div>
@@ -124,13 +129,16 @@
 
     <!-- 2. 首頁區 (Hero) - 純視覺展現區 -->
     <section class="hero-bg h-[90vh] relative">
-        <!-- 此區塊目前為純視覺大圖呈現，保持品牌的高質感印象 -->
     </section>
 
-    <!-- 3. 品牌理念 (About) - 承接原首頁之品牌精神 -->
-    <section id="about" class="py-24 bg-white">
+    <!-- 3. 品牌理念 (About) -->
+    <section id="about" class="py-24 bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20">
+            <div class="text-center mb-20 relative">
+                <!-- 兩側浮動吉祥物 -->
+                <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-09.png" class="hidden lg:block absolute -left-10 top-0 h-48 w-auto mascot-float opacity-90" alt="White Mascot">
+                <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-04.png" class="hidden lg:block absolute -right-10 top-0 h-48 w-auto mascot-float opacity-90" alt="Purple Mascot">
+
                 <p class="text-brand-orange font-medium tracking-[0.4em] mb-4 uppercase">忙碌生活，是否忘了好好照顧自己？</p>
                 <h1 class="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight">京選食材，簡單純粹</h1>
                 <div class="w-24 h-1.5 bg-brand-orange mx-auto rounded-full mb-10"></div>
@@ -148,18 +156,22 @@
                 </div>
             </div>
 
+            <!-- 核心價值區塊搭配吉祥物裝飾 -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="p-12 bg-slate-50 rounded-[3.5rem] text-center border border-slate-100 transition-all hover:border-brand-orange group shadow-sm">
+                <div class="p-12 bg-slate-50 rounded-[3.5rem] text-center border border-slate-100 transition-all hover:border-brand-orange group shadow-sm relative overflow-hidden">
+                    <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-06.png" class="absolute -right-6 -bottom-6 h-32 w-auto opacity-10 group-hover:opacity-40 transition-opacity duration-500" alt="Mascot Deco 1">
                     <div class="text-6xl font-black text-brand-orange mb-8 group-hover:scale-110 transition-transform">京</div>
                     <h4 class="text-xl font-bold mb-4 text-slate-800 tracking-widest uppercase">最上級</h4>
                     <p class="text-slate-500 text-sm leading-relaxed">代表最頂尖的選擇，提倡原形食材、安心健康。</p>
                 </div>
-                <div class="p-12 bg-slate-50 rounded-[3.5rem] text-center border border-slate-100 transition-all hover:border-brand-orange group shadow-sm">
+                <div class="p-12 bg-slate-50 rounded-[3.5rem] text-center border border-slate-100 transition-all hover:border-brand-orange group shadow-sm relative overflow-hidden">
+                    <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-05.png" class="absolute -right-6 -bottom-6 h-32 w-auto opacity-10 group-hover:opacity-40 transition-opacity duration-500" alt="Mascot Deco 2">
                     <div class="text-6xl font-black text-brand-orange mb-8 group-hover:scale-110 transition-transform">簡</div>
                     <h4 class="text-xl font-bold mb-4 text-slate-800 tracking-widest uppercase">簡單原味</h4>
                     <p class="text-slate-500 text-sm leading-relaxed">簡單調味不繁瑣，讓您吃得到食材最真實的味道。</p>
                 </div>
-                <div class="p-12 bg-slate-50 rounded-[3.5rem] text-center border border-slate-100 transition-all hover:border-brand-orange group shadow-sm">
+                <div class="p-12 bg-slate-50 rounded-[3.5rem] text-center border border-slate-100 transition-all hover:border-brand-orange group shadow-sm relative overflow-hidden">
+                    <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-07.png" class="absolute -right-6 -bottom-6 h-32 w-auto opacity-10 group-hover:opacity-40 transition-opacity duration-500" alt="Mascot Deco 3">
                     <div class="text-6xl font-black text-brand-orange mb-8 group-hover:scale-110 transition-transform">康</div>
                     <h4 class="text-xl font-bold mb-4 text-slate-800 tracking-widest uppercase">更健康</h4>
                     <p class="text-slate-500 text-sm leading-relaxed">透過均衡營養與專業烹調，讓享用餐點成為健康的來源。</p>
@@ -186,9 +198,6 @@
                     class="w-full h-full object-cover">
                 </video>
             </div>
-            <p class="mt-8 text-center text-slate-500 italic font-light tracking-widest">
-                每一道工序，都是為了將最純粹的美味交到您手中。
-            </p>
         </div>
     </section>
 
@@ -246,17 +255,32 @@
     <!-- AI 聊天管家視窗 -->
     <div id="aiChat" class="fixed bottom-6 right-6 z-[100] chat-window flex-col bg-white w-[350px] md:w-[420px] h-[550px] rounded-[3rem] overflow-hidden border border-brand-orange/20">
         <div class="p-6 btn-primary text-white flex justify-between items-center shadow-lg">
-            <span class="font-bold">✨ AI 智能營養管家</span>
+            <div class="flex items-center gap-3">
+                <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-04.png" class="h-12 w-auto drop-shadow-md" alt="AI Mascot Butler">
+                <span class="font-bold">AI 智能營養管家</span>
+            </div>
             <button onclick="openAIChat(false)" class="text-3xl leading-none">&times;</button>
         </div>
         <div id="chatHistory" class="flex-grow p-5 overflow-y-auto bg-slate-50 space-y-4 text-sm scroll-smooth">
-            <div class="bg-white border p-4 rounded-3xl rounded-tl-none text-slate-700 shadow-sm leading-relaxed">
-                您好！我是京簡康的 ✨ **AI 營養管家**。關於健康飲食或推薦口味，儘管問我！
+            <div class="flex gap-3">
+                <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-04.png" class="h-10 w-10 rounded-full bg-orange-100 p-1 object-contain" alt="Purple Mascot Head">
+                <div class="bg-white border p-4 rounded-3xl rounded-tl-none text-slate-700 shadow-sm leading-relaxed">
+                    您好！我是京簡康的吉祥物「紫米」，也是您的 **AI 營養管家**。關於健康飲食或推薦口味，儘管問我！
+                </div>
             </div>
         </div>
-        <div id="chatLoading" class="hidden px-6 py-2"><div class="loading-dots text-brand-orange text-lg"><span>●</span><span>●</span><span>●</span></div></div>
+        <div id="chatLoading" class="hidden px-6 py-2">
+            <div class="flex gap-2 items-center text-brand-orange">
+                <span class="text-xs font-bold">紫米正在思考中...</span>
+                <div class="flex gap-1">
+                    <span class="w-1.5 h-1.5 bg-brand-orange rounded-full animate-bounce"></span>
+                    <span class="w-1.5 h-1.5 bg-brand-orange rounded-full animate-bounce [animation-delay:0.2s]"></span>
+                    <span class="w-1.5 h-1.5 bg-brand-orange rounded-full animate-bounce [animation-delay:0.4s]"></span>
+                </div>
+            </div>
+        </div>
         <div class="p-5 bg-white border-t flex gap-3">
-            <input id="userInput" type="text" placeholder="例如：推薦低熱量的餐盒..." class="flex-grow bg-slate-100 rounded-2xl px-5 py-3 text-sm focus:ring-2 focus:ring-brand-orange outline-none transition-all">
+            <input id="userInput" type="text" placeholder="推薦低熱量的餐盒..." class="flex-grow bg-slate-100 rounded-2xl px-5 py-3 text-sm focus:ring-2 focus:ring-brand-orange outline-none transition-all">
             <button onclick="sendMessage()" class="bg-brand-orange text-white w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg active:scale-95 transition-all">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
             </button>
@@ -277,7 +301,7 @@
                     <span class="bg-brand-orange text-white w-10 h-10 rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform">→</span>
                 </a>
                 <a href="https://reurl.cc/yYQGMO" target="_blank" class="flex items-center justify-between p-7 border border-slate-100 rounded-3xl hover:bg-orange-50 transition-all group shadow-sm">
-                    <div><span class="block font-bold text-lg">台北 開通店</span><span class="text-xs text-slate-400">台北市中山區伊通街109之2號</span></div>
+                    <div><span class="block font-bold text-lg">台北伊通店</span><span class="text-xs text-slate-400">台北市中山區伊通街109之2號</span></div>
                     <span class="bg-brand-orange text-white w-10 h-10 rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform">→</span>
                 </a>
                 <a href="https://ddc.ai/1bblEe" target="_blank" class="flex items-center justify-between p-7 border border-slate-100 rounded-3xl hover:bg-orange-50 transition-all group shadow-sm">
@@ -292,31 +316,40 @@
     <div id="toast">訊息</div>
 
     <!-- 頁尾 -->
-    <footer class="bg-brand-dark text-white py-20 text-center">
-        <div class="mb-10 flex justify-center">
-            <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-LOGO-給廠商-03.png" alt="Logo" class="h-20 w-auto brightness-0 invert opacity-90 object-contain">
+    <footer class="bg-brand-dark text-white py-24 text-center relative overflow-hidden">
+        <!-- 頁尾裝飾：紫米與白米同框 -->
+        <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-04.png" class="absolute -left-10 bottom-0 h-56 w-auto opacity-15 pointer-events-none mascot-float" alt="Footer Deco 1">
+        <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-09.png" class="absolute -right-10 bottom-0 h-56 w-auto opacity-15 pointer-events-none mascot-float" alt="Footer Deco 2">
+
+        <div class="mb-12 flex flex-col items-center relative z-10">
+            <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-LOGO-給廠商-03.png" alt="Logo" class="h-24 w-auto brightness-0 invert opacity-90 object-contain mb-8">
+            <div class="flex gap-6 mb-8">
+                <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-04.png" class="h-20 w-auto drop-shadow-lg" alt="Purple Mascot Mascot">
+                <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-09.png" class="h-20 w-auto drop-shadow-lg" alt="White Mascot Mascot">
+            </div>
         </div>
         <p class="text-brand-orange text-base font-bold tracking-[0.4em] mb-6 uppercase">京簡康 - 健康新餐食</p>
         <p class="text-slate-500 text-xs italic mb-12 tracking-[0.3em] uppercase font-medium">健康不簡單，簡單才健康</p>
         
-        <div class="flex justify-center space-x-16 mb-12">
+        <div class="flex justify-center space-x-16 mb-12 relative z-10">
             <a href="https://www.facebook.com/JingJianKang2021" target="_blank" class="text-slate-400 hover:text-white transition-all group flex flex-col items-center gap-2">
-                <div class="p-3 bg-white/5 rounded-2xl group-hover:bg-brand-orange transition-colors shadow-lg">
-                    <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3l-.5 3H13v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>
+                <div class="p-4 bg-white/5 rounded-2xl group-hover:bg-brand-orange transition-colors shadow-lg">
+                    <svg class="w-10 h-10 fill-current" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3l-.5 3H13v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>
                 </div>
                 <span class="text-[10px] font-bold uppercase tracking-widest opacity-60">FB 粉絲團</span>
             </a>
             <a href="https://lin.ee/5qgDoSu" target="_blank" class="text-slate-400 hover:text-white transition-all group flex flex-col items-center gap-2">
-                <div class="p-3 bg-white/5 rounded-2xl group-hover:bg-brand-orange transition-colors shadow-lg">
-                    <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M24 10.3c0-4.6-5.4-8.3-12-8.3S0 5.7 0 10.3c0 4.1 4.3 7.5 10.1 8.2.4.1.9.4 1 .9.1.5.1 1.2 0 1.9-.1.4-.5 1.7-.6 1.8 0 .1-.3.5 1.1.3.8-.1 4.3-2.6 5.8-4.4 1.5-1.8 2.3-3.6 2.3-5.3 4.3-3.4 4.3-3.4 4.3-3.4zM7.2 13.2H4.8c-.2 0-.4-.2-.4-.4V7.6c0-.2.2-.4.4-.4h.4c.2 0 .4.2.4.4v4.8h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4zm2.8 0h-.4c-.2 0-.4-.2-.4-.4V7.6c0-.2.2-.4.4-.4h.4c.2 0 .4.2.4.4v5.2c0 .2-.2.4-.4.4zm5.5 0h-.4c-.1 0-.2 0-.3-.1L12.4 9v3.8c0 .2-.2.4-.4.4h-.4c-.2 0-.4-.2-.4-.4V7.6c0-.2.2-.4.4-.4h.4c.1 0 .2 0 .3.1l2.4 4.1V7.6c0-.2.2-.4.4-.4h.4c.2 0 .4.2.4.4v5.2c0 .2-.2.4-.4.4zm4.1-1.1h-1.6V10h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4zm0-2.8h-1.6V7.6h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4zm0 5.1h-1.6c-.2 0-.4-.2-.4-.4v-5.2c0-.2.2-.4.4-.4h2.4c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4H18v1.2h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4H18v1.2h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4z"/></svg>
+                <div class="p-4 bg-white/5 rounded-2xl group-hover:bg-brand-orange transition-colors shadow-lg">
+                    <svg class="w-10 h-10 fill-current" viewBox="0 0 24 24"><path d="M24 10.3c0-4.6-5.4-8.3-12-8.3S0 5.7 0 10.3c0 4.1 4.3 7.5 10.1 8.2.4.1.9.4 1 .9.1.5.1 1.2 0 1.9-.1.4-.5 1.7-.6 1.8 0 .1-.3.5 1.1.3.8-.1 4.3-2.6 5.8-4.4 1.5-1.8 2.3-3.6 2.3-5.3 4.3-3.4 4.3-3.4 4.3-3.4zM7.2 13.2H4.8c-.2 0-.4-.2-.4-.4V7.6c0-.2.2-.4.4-.4h.4c.2 0 .4.2.4.4v4.8h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4zm2.8 0h-.4c-.2 0-.4-.2-.4-.4V7.6c0-.2.2-.4.4-.4h.4c.2 0 .4.2.4.4v5.2c0 .2-.2.4-.4.4zm5.5 0h-.4c-.1 0-.2 0-.3-.1L12.4 9v3.8c0 .2-.2.4-.4.4h-.4c-.2 0-.4-.2-.4-.4V7.6c0-.2.2-.4.4-.4h.4c.1 0 .2 0 .3.1l2.4 4.1V7.6c0-.2.2-.4.4-.4h.4c.2 0 .4.2.4.4v5.2c0 .2-.2.4-.4.4zm4.1-1.1h-1.6V10h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4zm0-2.8h-1.6V7.6h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4zm0 5.1h-1.6c-.2 0-.4-.2-.4-.4v-5.2c0-.2.2-.4.4-.4h2.4c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4H18v1.2h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4H18v1.2h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4z"/></svg>
                 </div>
                 <span class="text-[10px] font-bold uppercase tracking-widest opacity-60">Line 官方</span>
             </a>
         </div>
-        <div class="text-slate-700 text-[10px] tracking-widest uppercase text-center w-full">© 2024 JING JIAN KANG. All Rights Reserved.</div>
+        <div class="text-slate-700 text-[10px] tracking-widest uppercase text-center w-full relative z-10">© 2024 JING JIAN KANG. All Rights Reserved.</div>
     </footer>
 
     <script>
+        // 設定與您的 GAS 安全權杖一致的值
         const SECURITY_TOKEN = "JJK_SECURE_888"; 
         const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzDdDOHTXsUke8Hh5ZuKZeeP5mZimzlgssb_5KPMeYaqBrlKVjhtqSeCcFebZfyPYDMNA/exec"; 
         const apiKey = ""; 
@@ -385,7 +418,7 @@
 
                 if (action === 'tts') {
                     const pcmData = result.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
-                    if (!pcmData) throw new Error('無法取得音訊數據');
+                    if (!pcmData) throw new Error('無法取得音訊');
                     const pcmBlob = Uint8Array.from(atob(pcmData), c => c.charCodeAt(0));
                     const wavHeader = new ArrayBuffer(44);
                     const view = new DataView(wavHeader);
@@ -410,20 +443,24 @@
             const text = input.value.trim();
             if (!text) return;
 
-            const userMsg = document.createElement('div');
-            userMsg.className = "ml-auto bg-brand-orange text-white p-4 rounded-3xl rounded-tr-none text-sm max-w-[85%] shadow-md";
-            userMsg.innerText = text;
-            history.appendChild(userMsg);
+            const userBox = document.createElement('div');
+            userBox.className = "ml-auto bg-brand-orange text-white p-4 rounded-3xl rounded-tr-none text-sm max-w-[85%] shadow-md";
+            userBox.innerText = text;
+            history.appendChild(userBox);
             input.value = "";
             loading.classList.remove('hidden');
             history.scrollTop = history.scrollHeight;
 
             const aiResponse = await callGAS(loading, 'chat', text);
             loading.classList.add('hidden');
-            const aiMsg = document.createElement('div');
-            aiMsg.className = "bg-white border p-4 rounded-3xl rounded-tl-none text-slate-700 max-w-[85%] shadow-sm leading-relaxed";
-            aiMsg.innerText = aiResponse;
-            history.appendChild(aiMsg);
+            
+            const aiBox = document.createElement('div');
+            aiBox.className = "flex gap-3";
+            aiBox.innerHTML = `
+                <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-04.png" class="h-10 w-10 rounded-full bg-orange-100 p-1 object-contain" alt="Purple Mascot Avatar">
+                <div class="bg-white border p-4 rounded-3xl rounded-tl-none text-slate-700 max-w-[85%] shadow-sm leading-relaxed">${aiResponse}</div>
+            `;
+            history.appendChild(aiBox);
             history.scrollTop = history.scrollHeight;
         }
 
