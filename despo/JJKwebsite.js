@@ -97,19 +97,14 @@ function getTurnstileSiteKey() {
     return siteKey;
 }
 
-async function getTurnstileToken() {
+async function getTurnstileToken(action) {
     const siteKey = getTurnstileSiteKey();
     await waitForTurnstileApi();
+    const turnstileAction = action === 'tts' ? 'tts' : 'chat';
 
     return new Promise((resolve, reject) => {
         const holder = document.createElement('div');
-        holder.style.position = 'fixed';
-        holder.style.left = '-9999px';
-        holder.style.top = '0';
-        holder.style.width = '1px';
-        holder.style.height = '1px';
-        holder.style.opacity = '0';
-        holder.style.pointerEvents = 'none';
+        holder.className = 'turnstile-hidden-widget';
         document.body.appendChild(holder);
 
         let widgetId = null;
@@ -133,6 +128,7 @@ async function getTurnstileToken() {
         widgetId = window.turnstile.render(holder, {
             sitekey: siteKey,
             size: 'invisible',
+            action: turnstileAction,
             callback: (token) => done(resolve, token),
             'error-callback': () => done(reject, new Error(MSG_TURNSTILE_FAIL)),
             'expired-callback': () => done(reject, new Error(MSG_TURNSTILE_TIMEOUT)),
@@ -300,7 +296,7 @@ async function callGAS(element, action, text) {
     let timeoutId = 0;
 
     try {
-        const turnstileToken = await getTurnstileToken();
+        const turnstileToken = await getTurnstileToken(action);
         const controller = new AbortController();
         timeoutId = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
         const response = await fetch(GAS_WEB_APP_URL, {
@@ -310,11 +306,7 @@ async function callGAS(element, action, text) {
             body: JSON.stringify({
                 action,
                 text: String(text).slice(0, MAX_MESSAGE_LENGTH),
-                menuData,
                 userId: VISITOR_ID,
-                userAgent: navigator.userAgent || '',
-                language: navigator.language || '',
-                tzOffset: String(new Date().getTimezoneOffset()),
                 turnstileToken,
             }),
         });
