@@ -150,7 +150,30 @@
         <div class="max-w-7xl mx-auto px-4 text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-12 tracking-wider uppercase">服務據點</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left" id="storeContainer">
-                <!-- 內容由 JS 渲染 (略) -->
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-200 hover:border-brand-orange transition-colors">
+                    <h3 class="text-2xl font-bold text-brand-orange mb-4 text-center">台北延平店</h3>
+                    <p class="text-slate-600 text-sm mb-2 text-center">📍 台北市中正區延平南路171巷1號</p>
+                    <p class="text-slate-600 text-sm mb-8 text-center">📞 02-2331-5166</p>
+                    <div class="flex gap-3">
+                        <a href="https://reurl.cc/E4peRK" target="_blank" class="flex-[1.5] py-3 btn-primary text-white rounded-xl text-xs font-bold text-center">立即訂餐</a>
+                    </div>
+                </div>
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-200 hover:border-brand-orange transition-colors">
+                    <h3 class="text-2xl font-bold text-brand-orange mb-4 text-center">台北伊通店</h3>
+                    <p class="text-slate-600 text-sm mb-2 text-center">📍 台北市中山區伊通街109之2號</p>
+                    <p class="text-slate-600 text-sm mb-8 text-center">📞 02-2507-9662</p>
+                    <div class="flex gap-3">
+                        <a href="https://reurl.cc/yYQGMO" target="_blank" class="flex-[1.5] py-3 btn-primary text-white rounded-xl text-xs font-bold text-center">立即訂餐</a>
+                    </div>
+                </div>
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-200 hover:border-brand-orange transition-colors">
+                    <h3 class="text-2xl font-bold text-brand-orange mb-4 text-center">三峽北大店</h3>
+                    <p class="text-slate-600 text-sm mb-2 text-center">📍 新北市三峽區學成路250號</p>
+                    <p class="text-slate-600 text-sm mb-8 text-center">📞 02-2673-6012</p>
+                    <div class="flex gap-3">
+                        <a href="https://ddc.ai/1bblEe" target="_blank" class="flex-[1.5] py-3 btn-primary text-white rounded-xl text-xs font-bold text-center">立即訂餐</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -189,7 +212,7 @@
     <!-- 提示框 -->
     <div id="toast">訊息</div>
 
-    <!-- 頁尾 (優化社群圖示) -->
+    <!-- 頁尾 (質感強化社群圖示) -->
     <footer class="bg-brand-dark text-white py-24 text-center relative overflow-hidden">
         <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-04.png" class="absolute -left-10 bottom-0 h-56 w-auto mascot-float drop-shadow-2xl z-0" alt="京哥">
         <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-09.png" class="absolute -right-10 bottom-0 h-56 w-auto mascot-float drop-shadow-2xl z-0" alt="康妹">
@@ -202,25 +225,29 @@
             </div>
         </div>
 
-        <!-- 更新後的精緻社群連結圖示 -->
+        <!-- 質感強化：立體圓形漸層社群按鈕 -->
         <div class="flex justify-center space-x-12 mb-16 relative z-10">
-            <!-- FB 連結 -->
+            <!-- FB 立體漸層按鈕 -->
             <a href="https://www.facebook.com/JingJianKang2021" target="_blank" class="group flex flex-col items-center gap-3">
-                <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:bg-brand-orange group-hover:shadow-[0_0_20px_rgba(232,112,51,0.5)] group-hover:-translate-y-1">
-                    <svg class="w-8 h-8 fill-white" viewBox="0 0 24 24">
-                        <path d="M9 2.979v3.303h2.661v3.537H9v11.202h-3.92V9.819H2.419V6.282h2.661V3.411C5.08 1.157 6.447 0 9.177 0c1.306 0 2.427.097 2.754.14v3.193H9.95c-1.094 0-1.306.52-1.306 1.281l-.001.365z"/>
+                <div class="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-500 shadow-lg relative overflow-hidden bg-gradient-to-br from-[#1877F2] to-[#0A52B5] group-hover:scale-110 group-hover:shadow-[0_0_25px_rgba(24,119,242,0.6)]">
+                    <!-- 反光效果 -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-white/0 to-white/20 opacity-50"></div>
+                    <svg class="w-8 h-8 fill-white relative z-10" viewBox="0 0 24 24">
+                        <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.325v21.351C0 23.403.597 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.728 0 1.325-.597 1.325-1.325V1.325C24 .597 23.403 0 22.675 0z"/>
                     </svg>
                 </div>
-                <span class="text-[11px] font-bold text-slate-400 tracking-widest group-hover:text-white transition-colors">FACEBOOK</span>
+                <span class="text-[11px] font-black text-slate-400 tracking-[0.2em] group-hover:text-white transition-colors duration-300">FB 粉絲團</span>
             </a>
-            <!-- Line 連結 -->
+            <!-- Line 立體漸層按鈕 -->
             <a href="https://lin.ee/5qgDoSu" target="_blank" class="group flex flex-col items-center gap-3">
-                <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:bg-[#06C755] group-hover:shadow-[0_0_20px_rgba(6,199,85,0.4)] group-hover:-translate-y-1">
-                    <svg class="w-9 h-9 fill-white" viewBox="0 0 24 24">
+                <div class="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-500 shadow-lg relative overflow-hidden bg-gradient-to-br from-[#06C755] to-[#059F44] group-hover:scale-110 group-hover:shadow-[0_0_25px_rgba(6,199,85,0.5)]">
+                    <!-- 反光效果 -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-white/0 to-white/20 opacity-50"></div>
+                    <svg class="w-9 h-9 fill-white relative z-10" viewBox="0 0 24 24">
                         <path d="M24 10.304c0-4.369-5.383-7.904-12-7.904s-12 3.535-12 7.904c0 3.921 4.279 7.21 10.074 7.853.392.081.926.258 1.054.592.146.381.096.975.046 1.358l-.198 1.202c-.061.363-.284 1.419 1.22 0.775 1.504-.644 8.125-4.782 11.077-8.182 1.516-1.742 2.727-3.704 2.727-5.6z"/>
                     </svg>
                 </div>
-                <span class="text-[11px] font-bold text-slate-400 tracking-widest group-hover:text-white transition-colors">LINE OFFICIAL</span>
+                <span class="text-[11px] font-black text-slate-400 tracking-[0.2em] group-hover:text-white transition-colors duration-300">LINE 官方</span>
             </a>
         </div>
 
@@ -348,7 +375,6 @@
         function toggleModal(show) { document.getElementById('storeModal').classList.toggle('modal-active', show); }
         document.addEventListener('DOMContentLoaded', () => {
             renderMenu();
-            // 初始化門市據點 (略)
         });
     </script>
 </body>
