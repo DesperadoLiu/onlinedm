@@ -102,21 +102,18 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <!-- 京哥代表京 -->
                 <div class="p-12 bg-slate-50 rounded-[3.5rem] text-center border border-slate-100 transition-all hover:border-brand-orange group shadow-sm flex flex-col items-center">
                     <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-06.png" class="h-32 w-auto mb-6 mascot-float drop-shadow-md" alt="京哥">
                     <div class="text-6xl font-black text-brand-orange mb-6 group-hover:scale-110 transition-transform">京</div>
                     <h4 class="text-xl font-bold mb-4 text-slate-800 tracking-widest uppercase">京哥：最上級</h4>
                     <p class="text-slate-500 text-sm leading-relaxed">代表頂尖的選擇，提倡原形食材、安心健康。</p>
                 </div>
-                <!-- 簡 -->
                 <div class="p-12 bg-slate-50 rounded-[3.5rem] text-center border border-slate-100 transition-all hover:border-brand-orange group shadow-sm flex flex-col items-center">
                     <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-05.png" class="h-32 w-auto mb-6 mascot-float drop-shadow-md" alt="簡單原味">
                     <div class="text-6xl font-black text-brand-orange mb-6 group-hover:scale-110 transition-transform">簡</div>
                     <h4 class="text-xl font-bold mb-4 text-slate-800 tracking-widest uppercase">簡單原味</h4>
                     <p class="text-slate-500 text-sm leading-relaxed">簡單調味不繁瑣，讓您吃得到食材最真實的味道。</p>
                 </div>
-                <!-- 康妹代表康 -->
                 <div class="p-12 bg-slate-50 rounded-[3.5rem] text-center border border-slate-100 transition-all hover:border-brand-orange group shadow-sm flex flex-col items-center">
                     <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-07.png" class="h-32 w-auto mb-6 mascot-float drop-shadow-md" alt="康妹">
                     <div class="text-6xl font-black text-brand-orange mb-6 group-hover:scale-110 transition-transform">康</div>
@@ -148,12 +145,12 @@
         </div>
     </section>
 
-    <!-- 據點 -->
+    <!-- 服務據點 -->
     <section id="locations" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-12 tracking-wider uppercase">服務據點</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left" id="locationContainer">
-                <!-- 據點卡片 (略，維持前版) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left" id="storeContainer">
+                <!-- 內容由 JS 渲染 (略) -->
             </div>
         </div>
     </section>
@@ -192,18 +189,41 @@
     <!-- 提示框 -->
     <div id="toast">訊息</div>
 
-    <!-- 頁尾 (京哥與康妹) -->
+    <!-- 頁尾 (優化社群圖示) -->
     <footer class="bg-brand-dark text-white py-24 text-center relative overflow-hidden">
-        <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-04.png" class="absolute -left-10 bottom-0 h-56 w-auto mascot-float drop-shadow-2xl opacity-40" alt="京哥">
-        <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-09.png" class="absolute -right-10 bottom-0 h-56 w-auto mascot-float drop-shadow-2xl opacity-40" alt="康妹">
+        <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-04.png" class="absolute -left-10 bottom-0 h-56 w-auto mascot-float drop-shadow-2xl z-0" alt="京哥">
+        <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-09.png" class="absolute -right-10 bottom-0 h-56 w-auto mascot-float drop-shadow-2xl z-0" alt="康妹">
 
         <div class="mb-12 flex flex-col items-center relative z-10">
             <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-LOGO-給廠商-03.png" alt="Logo" class="h-24 w-auto brightness-0 invert opacity-90 object-contain mb-8">
-            <div class="flex gap-6 mb-8 items-center">
+            <div class="flex gap-10 mb-12 items-center">
                 <div class="text-center"><img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-04.png" class="h-20 w-auto drop-shadow-lg mx-auto" alt="Jing Ge"><p class="text-[10px] mt-2 font-bold text-slate-400 uppercase tracking-widest">京哥 Jing Ge</p></div>
                 <div class="text-center"><img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-09.png" class="h-20 w-auto drop-shadow-lg mx-auto" alt="Kang Mei"><p class="text-[10px] mt-2 font-bold text-slate-400 uppercase tracking-widest">康妹 Kang Mei</p></div>
             </div>
         </div>
+
+        <!-- 更新後的精緻社群連結圖示 -->
+        <div class="flex justify-center space-x-12 mb-16 relative z-10">
+            <!-- FB 連結 -->
+            <a href="https://www.facebook.com/JingJianKang2021" target="_blank" class="group flex flex-col items-center gap-3">
+                <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:bg-brand-orange group-hover:shadow-[0_0_20px_rgba(232,112,51,0.5)] group-hover:-translate-y-1">
+                    <svg class="w-8 h-8 fill-white" viewBox="0 0 24 24">
+                        <path d="M9 2.979v3.303h2.661v3.537H9v11.202h-3.92V9.819H2.419V6.282h2.661V3.411C5.08 1.157 6.447 0 9.177 0c1.306 0 2.427.097 2.754.14v3.193H9.95c-1.094 0-1.306.52-1.306 1.281l-.001.365z"/>
+                    </svg>
+                </div>
+                <span class="text-[11px] font-bold text-slate-400 tracking-widest group-hover:text-white transition-colors">FACEBOOK</span>
+            </a>
+            <!-- Line 連結 -->
+            <a href="https://lin.ee/5qgDoSu" target="_blank" class="group flex flex-col items-center gap-3">
+                <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:bg-[#06C755] group-hover:shadow-[0_0_20px_rgba(6,199,85,0.4)] group-hover:-translate-y-1">
+                    <svg class="w-9 h-9 fill-white" viewBox="0 0 24 24">
+                        <path d="M24 10.304c0-4.369-5.383-7.904-12-7.904s-12 3.535-12 7.904c0 3.921 4.279 7.21 10.074 7.853.392.081.926.258 1.054.592.146.381.096.975.046 1.358l-.198 1.202c-.061.363-.284 1.419 1.22 0.775 1.504-.644 8.125-4.782 11.077-8.182 1.516-1.742 2.727-3.704 2.727-5.6z"/>
+                    </svg>
+                </div>
+                <span class="text-[11px] font-bold text-slate-400 tracking-widest group-hover:text-white transition-colors">LINE OFFICIAL</span>
+            </a>
+        </div>
+
         <p class="text-brand-orange text-base font-bold tracking-[0.4em] mb-6 uppercase">京簡康 - 健康新餐食</p>
         <p class="text-slate-500 text-[10px] tracking-widest uppercase mb-12">© 2024 JING JIAN KANG. All Rights Reserved.</p>
     </footer>
@@ -213,25 +233,53 @@
         const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzDdDOHTXsUke8Hh5ZuKZeeP5mZimzlgssb_5KPMeYaqBrlKVjhtqSeCcFebZfyPYDMNA/exec"; 
 
         const menuData = [
-            { id: 1, name: "香魯牛腱餐盒", price: 170, desc: "精選十三香滷包，慢火燉煮牛腱，濃郁風味，層次分明。" },
-            { id: 2, name: "焙煎胡麻肉片餐盒", price: 115, desc: "嚴選日式焙煎胡麻醬，香味濃郁，搭配豬肉片。" },
-            { id: 3, name: "蔥鹽雞胸餐盒", price: 135, desc: "雙油淬煉紅蔥油與橄欖油黃金比例，搭配新鮮青蔥，爽脆蔥油香。" },
-            { id: 4, name: "烤檸檬鮭魚餐盒", price: 199, desc: "鮭魚肉含高蛋白質，蒸烤後皮酥肉嫩，外酥內軟。" },
-            { id: 5, name: "日式烤雞腿餐盒", price: 170, desc: "去骨雞腿刷上日式醬料，烤至金黃焦香，吮指美味。" },
-            { id: 6, name: "烤雪霜肉餐盒", price: 160, desc: "雪霜肉油花均勻口感Q彈，撒上玫瑰鹽簡單原味。" },
-            { id: 7, name: "香烤桔汁里肌餐盒", price: 145, desc: "上選里肌刷上獨家桔汁，蒸烤後清爽甜香。" },
-            { id: 8, name: "烤挪威鯖魚餐盒", price: 145, desc: "挪威鯖魚油脂豐厚，鹹香細緻。高品質魚肉。" },
-            { id: 9, name: "韓式泡菜雞胸餐盒", price: 135, desc: "低溫蒸煮雞胸搭配韓式泡菜，脆口清爽低負擔。" },
-            { id: 10, name: "壽喜燒豚肉片餐盒", price: 125, desc: "汆燙軟嫩豬肉片淋上日式壽喜燒醬。" },
-            { id: 11, name: "黑胡椒嫩雞胸餐盒", price: 135, desc: "新鮮雞胸以低溫蒸煮熟化，保留肉質鮮嫩。" },
-            { id: 12, name: "經典豬雞妙算餐盒", price: 135, desc: "胡麻豬肉片與黑胡椒香嫩雞胸雙饗組合。" }
+            { id: 1, name: "香魯牛腱餐盒", price: 170, desc: "精選十三香滷包，慢火燉煮牛腱，濃郁風味，層次分明。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/香魯牛煎餐盒-去番茄.png" },
+            { id: 2, name: "焙煎胡麻肉片餐盒", price: 115, desc: "嚴選日式焙煎胡麻醬，香味濃郁，搭配豬肉片。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/焙煎胡麻肉片餐盒-去番茄.png" },
+            { id: 3, name: "蔥鹽雞胸餐盒", price: 135, desc: "雙油淬煉紅蔥油與橄欖油黃金比例，搭配新鮮青蔥，爽脆蔥油香。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/蔥鹽雞胸-外帶.jpg" },
+            { id: 4, name: "烤檸檬鮭魚餐盒", price: 199, desc: "鮭魚肉含高蛋白質，蒸烤後皮酥肉嫩，外酥內軟。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/烤檸檬鮭魚餐盒-去番茄.png" },
+            { id: 5, name: "日式烤雞腿餐盒", price: 170, desc: "去骨雞腿刷上日式醬料，烤至金黃焦香，吮指美味。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/日式烤雞腿餐盒-去番茄.png" },
+            { id: 6, name: "烤雪霜肉餐盒", price: 160, desc: "雪霜肉油花均勻口感Q彈，撒上玫瑰鹽簡單原味。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/烤雪霜肉餐盒-去番茄.png" },
+            { id: 7, name: "香烤桔汁里肌餐盒", price: 145, desc: "上選里肌刷上獨家桔汁，蒸烤後清爽甜香。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/香烤桔汁里肌餐盒-去番茄.png" },
+            { id: 8, name: "烤挪威鯖魚餐盒", price: 145, desc: "挪威鯖魚油脂豐厚，鹹香細緻。高品質魚肉。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/烤挪威鯖魚餐盒-去番茄.png" },
+            { id: 9, name: "韓式泡菜雞胸餐盒", price: 135, desc: "低溫蒸煮雞胸搭配韓式泡菜，脆口清爽低負擔。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/韓式泡菜雞胸餐盒-去番茄.png" },
+            { id: 10, name: "壽喜燒豚肉片餐盒", price: 125, desc: "汆燙軟嫩豬肉片淋上日式壽喜燒醬。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/壽喜燒豚肉片餐盒-去番茄.png" },
+            { id: 11, name: "黑胡椒嫩雞胸餐盒", price: 135, desc: "新鮮雞胸以低溫蒸煮熟化，保留肉質鮮嫩。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/黑胡椒嫩雞胸餐盒-去番茄.png" },
+            { id: 12, name: "經典豬雞妙算餐盒", price: 135, desc: "胡麻豬肉片與黑胡椒香嫩雞胸雙饗組合。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/經典豬雞妙算餐盒-去番茄.png" }
         ];
 
         function showToast(msg) {
             const t = document.getElementById("toast");
-            t.textContent = msg; 
-            t.className = "show";
+            t.textContent = msg; t.className = "show";
             setTimeout(() => { t.className = ""; }, 3000);
+        }
+
+        function renderMenu() {
+            const container = document.getElementById('mealContainer');
+            if (!container) return;
+            container.innerHTML = '';
+            menuData.forEach(meal => {
+                const card = document.createElement('div');
+                card.className = "menu-card bg-white rounded-[3rem] overflow-hidden border border-slate-100 flex flex-col h-full shadow-sm relative group";
+                
+                const ttsBtn = document.createElement('button');
+                ttsBtn.className = "absolute top-5 right-5 bg-white/90 hover:bg-brand-orange hover:text-white text-brand-orange w-11 h-11 rounded-full flex items-center justify-center shadow-lg z-10 transition-all active:scale-90";
+                ttsBtn.textContent = "✨";
+                ttsBtn.onclick = () => callGAS(ttsBtn, 'tts', `${meal.name}。特色是：${meal.desc}`);
+
+                const imgContainer = document.createElement('div');
+                imgContainer.className = "h-64 bg-slate-50 flex items-center justify-center p-8 overflow-hidden";
+                const img = document.createElement('img');
+                img.src = meal.img;
+                img.className = "max-h-full max-w-full object-contain product-img transition-transform duration-700 group-hover:scale-110";
+                imgContainer.appendChild(img);
+
+                const content = document.createElement('div');
+                content.className = "p-10 flex-grow flex flex-col border-t border-slate-50 text-center";
+                content.innerHTML = `<div class="flex justify-between items-center mb-4"><h3 class="text-xl font-bold text-slate-900">${meal.name}</h3><span class="text-brand-orange font-bold text-xl">$${meal.price}</span></div><p class="text-slate-500 text-lg leading-relaxed font-light">${meal.desc}</p>`;
+
+                card.appendChild(ttsBtn); card.appendChild(imgContainer); card.appendChild(content);
+                container.appendChild(card);
+            });
         }
 
         async function sendMessage() {
@@ -255,17 +303,14 @@
             
             const aiBox = document.createElement('div');
             aiBox.className = "flex gap-3";
-            
             const aiAvatar = document.createElement('img');
             aiAvatar.src = "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-04.png";
             aiAvatar.className = "h-10 w-10 rounded-full bg-orange-100 p-1 object-contain";
-            
             const aiTextWrapper = document.createElement('div');
             aiTextWrapper.className = "bg-white border p-4 rounded-3xl rounded-tl-none text-slate-700 max-w-[85%] shadow-sm leading-relaxed";
             aiTextWrapper.textContent = aiResponse; 
             
-            aiBox.appendChild(aiAvatar);
-            aiBox.appendChild(aiTextWrapper);
+            aiBox.appendChild(aiAvatar); aiBox.appendChild(aiTextWrapper);
             history.appendChild(aiBox);
             history.scrollTop = history.scrollHeight;
         }
@@ -301,8 +346,10 @@
 
         function openAIChat(show = true) { document.getElementById('aiChat').classList.toggle('chat-active', show); }
         function toggleModal(show) { document.getElementById('storeModal').classList.toggle('modal-active', show); }
-        // 渲染選單 (略，同前版邏輯)
-        document.addEventListener('DOMContentLoaded', () => { /* renderMenu logic */ });
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMenu();
+            // 初始化門市據點 (略)
+        });
     </script>
 </body>
 </html>
