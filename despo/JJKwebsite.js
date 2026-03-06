@@ -327,26 +327,42 @@ async function callGAS(element, action, text) {
         if (action === 'tts') {
             const parts = result.candidates?.[0]?.content?.parts;
             const audioPart = Array.isArray(parts) ? parts.find((part) => part?.inlineData?.data) : null;
-            const pcmData = audioPart?.inlineData?.data;
-            if (!pcmData) throw new Error('Missing audio payload');
+            const base64Data = audioPart?.inlineData?.data;
+            const mimeType = String(audioPart?.inlineData?.mimeType || '').toLowerCase();
+            if (!base64Data) throw new Error('Missing audio payload');
 
-            const pcmBlob = Uint8Array.from(atob(pcmData), (char) => char.charCodeAt(0));
-            const wavHeader = new ArrayBuffer(44);
-            const view = new DataView(wavHeader);
-            view.setUint32(0, 0x52494646, false);
-            view.setUint32(4, 36 + pcmBlob.length, true);
-            view.setUint32(8, 0x57415645, false);
-            view.setUint32(12, 0x666d7420, false);
-            view.setUint16(20, 1, true);
-            view.setUint16(22, 1, true);
-            view.setUint32(24, 24000, true);
-            view.setUint32(28, 48000, true);
-            view.setUint16(32, 2, true);
-            view.setUint16(34, 16, true);
-            view.setUint32(36, 0x64617461, false);
-            view.setUint32(40, pcmBlob.length, true);
+            const audioBytes = Uint8Array.from(atob(base64Data), (char) => char.charCodeAt(0));
+            let audioBlob;
 
-            const audioUrl = URL.createObjectURL(new Blob([wavHeader, pcmBlob], { type: 'audio/wav' }));
+            if (mimeType.includes('wav') || mimeType.includes('mpeg') || mimeType.includes('mp3') || mimeType.includes('ogg')) {
+                audioBlob = new Blob([audioBytes], { type: mimeType || 'audio/mpeg' });
+            } else {
+                const rateMatch = mimeType.match(/rate=(\d+)/);
+                const sampleRate = rateMatch ? Number(rateMatch[1]) : 24000;
+                const channels = 1;
+                const bitsPerSample = 16;
+                const blockAlign = channels * (bitsPerSample / 8);
+                const byteRate = sampleRate * blockAlign;
+
+                const wavHeader = new ArrayBuffer(44);
+                const view = new DataView(wavHeader);
+                view.setUint32(0, 0x52494646, false);
+                view.setUint32(4, 36 + audioBytes.length, true);
+                view.setUint32(8, 0x57415645, false);
+                view.setUint32(12, 0x666d7420, false);
+                view.setUint32(16, 16, true);
+                view.setUint16(20, 1, true);
+                view.setUint16(22, channels, true);
+                view.setUint32(24, sampleRate, true);
+                view.setUint32(28, byteRate, true);
+                view.setUint16(32, blockAlign, true);
+                view.setUint16(34, bitsPerSample, true);
+                view.setUint32(36, 0x64617461, false);
+                view.setUint32(40, audioBytes.length, true);
+                audioBlob = new Blob([wavHeader, audioBytes], { type: 'audio/wav' });
+            }
+
+            const audioUrl = URL.createObjectURL(audioBlob);
             const audio = new Audio(audioUrl);
             audio.addEventListener('ended', () => URL.revokeObjectURL(audioUrl), { once: true });
             audio.addEventListener('error', () => URL.revokeObjectURL(audioUrl), { once: true });
