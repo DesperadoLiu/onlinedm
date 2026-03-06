@@ -73,6 +73,7 @@
                     </button>
                     <a href="#locations" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">服務據點</a>
                 </div>
+                <!-- 點擊觸發點餐彈窗 -->
                 <button onclick="toggleModal(true)" class="btn-primary text-white px-8 py-3 rounded-full font-bold transition-all shadow-md active:scale-95 text-sm md:text-base">
                     線上點餐
                 </button>
@@ -146,26 +147,26 @@
         <div class="max-w-7xl mx-auto px-4 text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-12 tracking-wider uppercase">服務據點</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-200 hover:border-brand-orange transition-colors">
-                    <h3 class="text-2xl font-bold text-brand-orange mb-4 text-center">台北延平店</h3>
-                    <p class="text-slate-600 text-sm mb-2 text-center">📍 台北市中正區延平南路171巷1號</p>
-                    <p class="text-slate-600 text-sm mb-8 text-center">📞 02-2331-5166</p>
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-200 hover:border-brand-orange transition-colors text-center">
+                    <h3 class="text-2xl font-bold text-brand-orange mb-4">台北延平店</h3>
+                    <p class="text-slate-600 text-sm mb-2">📍 台北市中正區延平南路171巷1號</p>
+                    <p class="text-slate-600 text-sm mb-8">📞 02-2331-5166</p>
                     <div class="flex gap-3">
                         <a href="https://reurl.cc/E4peRK" target="_blank" class="flex-[1.5] py-3 btn-primary text-white rounded-xl text-xs font-bold text-center">立即訂餐</a>
                     </div>
                 </div>
-                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-200 hover:border-brand-orange transition-colors">
-                    <h3 class="text-2xl font-bold text-brand-orange mb-4 text-center">台北伊通店</h3>
-                    <p class="text-slate-600 text-sm mb-2 text-center">📍 台北市中山區伊通街109之2號</p>
-                    <p class="text-slate-600 text-sm mb-8 text-center">📞 02-2507-9662</p>
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-200 hover:border-brand-orange transition-colors text-center">
+                    <h3 class="text-2xl font-bold text-brand-orange mb-4">台北伊通店</h3>
+                    <p class="text-slate-600 text-sm mb-2">📍 台北市中山區伊通街109之2號</p>
+                    <p class="text-slate-600 text-sm mb-8">📞 02-2507-9662</p>
                     <div class="flex gap-3">
                         <a href="https://reurl.cc/yYQGMO" target="_blank" class="flex-[1.5] py-3 btn-primary text-white rounded-xl text-xs font-bold text-center">立即訂餐</a>
                     </div>
                 </div>
-                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-200 hover:border-brand-orange transition-colors">
-                    <h3 class="text-2xl font-bold text-brand-orange mb-4 text-center">三峽北大店</h3>
-                    <p class="text-slate-600 text-sm mb-2 text-center">📍 新北市三峽區學成路250號</p>
-                    <p class="text-slate-600 text-sm mb-8 text-center">📞 02-2673-6012</p>
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-200 hover:border-brand-orange transition-colors text-center">
+                    <h3 class="text-2xl font-bold text-brand-orange mb-4">三峽北大店</h3>
+                    <p class="text-slate-600 text-sm mb-2">📍 新北市三峽區學成路250號</p>
+                    <p class="text-slate-600 text-sm mb-8">📞 02-2673-6012</p>
                     <div class="flex gap-3">
                         <a href="https://ddc.ai/1bblEe" target="_blank" class="flex-[1.5] py-3 btn-primary text-white rounded-xl text-xs font-bold text-center">立即訂餐</a>
                     </div>
@@ -173,6 +174,31 @@
             </div>
         </div>
     </section>
+
+    <!-- 線上點餐門市選擇彈窗 (Modal) -->
+    <div id="storeModal" class="fixed inset-0 z-[200] hidden items-center justify-center bg-brand-dark/80 backdrop-blur-sm p-4">
+        <div class="bg-white w-full max-w-md rounded-[3rem] overflow-hidden shadow-2xl relative">
+            <div class="btn-primary p-8 text-white text-center">
+                <h3 class="text-2xl font-black tracking-widest">請選擇點餐門市</h3>
+                <p class="text-sm opacity-90 mt-2 tracking-widest">選取後將導往線上點餐系統</p>
+            </div>
+            <div class="p-8 space-y-4">
+                <button onclick="window.open('https://reurl.cc/E4peRK', '_blank'); toggleModal(false);" class="w-full py-5 bg-slate-50 hover:bg-brand-orange hover:text-white rounded-2xl font-bold text-slate-700 transition-all border border-slate-100 flex items-center justify-center gap-3 group">
+                    <span>台北延平店</span>
+                    <svg class="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+                <button onclick="window.open('https://reurl.cc/yYQGMO', '_blank'); toggleModal(false);" class="w-full py-5 bg-slate-50 hover:bg-brand-orange hover:text-white rounded-2xl font-bold text-slate-700 transition-all border border-slate-100 flex items-center justify-center gap-3 group">
+                    <span>台北伊通店</span>
+                    <svg class="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+                <button onclick="window.open('https://ddc.ai/1bblEe', '_blank'); toggleModal(false);" class="w-full py-5 bg-slate-50 hover:bg-brand-orange hover:text-white rounded-2xl font-bold text-slate-700 transition-all border border-slate-100 flex items-center justify-center gap-3 group">
+                    <span>三峽北大店</span>
+                    <svg class="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+                <button onclick="toggleModal(false)" class="w-full py-4 text-slate-400 font-medium hover:text-slate-600 transition-colors text-sm">取消點餐</button>
+            </div>
+        </div>
+    </div>
 
     <!-- AI 聊天管家 (京哥) -->
     <div id="aiChat" class="fixed bottom-6 right-6 z-[100] chat-window flex-col bg-white w-[350px] md:w-[420px] h-[550px] rounded-[3rem] overflow-hidden border border-brand-orange/20">
@@ -208,19 +234,15 @@
     <!-- 提示框 -->
     <div id="toast">訊息</div>
 
-    <!-- 頁尾 (簡約佈局：移除背景公仔浮水印) -->
+    <!-- 頁尾 -->
     <footer class="bg-brand-dark text-white py-24 text-center relative overflow-hidden">
-        
         <div class="max-w-7xl mx-auto px-4 relative z-10">
-            <!-- 核心五位一體橫排：京哥 - FB - Logo - Line - 康妹 -->
             <div class="flex flex-row items-center justify-center gap-2 sm:gap-6 md:gap-12 lg:gap-16 mb-16">
-                
                 <!-- 1. 京哥 -->
                 <div class="flex flex-col items-center shrink-0">
                     <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-04.png" class="h-16 sm:h-20 md:h-28 w-auto mascot-float drop-shadow-lg" alt="京哥">
                     <p class="hidden sm:block text-[10px] font-bold text-slate-400 mt-2 tracking-widest">京哥</p>
                 </div>
-
                 <!-- 2. FB 粉絲團 -->
                 <a href="https://www.facebook.com/JingJianKang2021" target="_blank" class="group flex flex-col items-center shrink-0">
                     <div class="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center transition-all duration-500 bg-gradient-to-br from-[#1877F2] to-[#0A52B5] hover:scale-110 shadow-lg group-hover:shadow-[0_0_20px_rgba(24,119,242,0.5)]">
@@ -228,12 +250,10 @@
                     </div>
                     <span class="hidden md:block text-[10px] font-black text-slate-500 mt-3 tracking-tighter group-hover:text-white transition-colors">FACEBOOK</span>
                 </a>
-
                 <!-- 3. 中央 Logo -->
                 <div class="shrink-0 px-2 sm:px-4">
                     <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-LOGO-給廠商-03.png" alt="Logo" class="h-10 sm:h-16 md:h-24 w-auto brightness-0 invert opacity-95 object-contain">
                 </div>
-
                 <!-- 4. LINE 官方 -->
                 <a href="https://lin.ee/5qgDoSu" target="_blank" class="group flex flex-col items-center shrink-0">
                     <div class="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center transition-all duration-500 bg-gradient-to-br from-[#06C755] to-[#059F44] hover:scale-110 shadow-lg group-hover:shadow-[0_0_20px_rgba(6,199,85,0.4)]">
@@ -241,16 +261,12 @@
                     </div>
                     <span class="hidden md:block text-[10px] font-black text-slate-500 mt-3 tracking-tighter group-hover:text-white transition-colors">LINE</span>
                 </a>
-
                 <!-- 5. 康妹 -->
                 <div class="flex flex-col items-center shrink-0">
                     <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-09.png" class="h-16 sm:h-20 md:h-28 w-auto mascot-float drop-shadow-lg" alt="康妹">
                     <p class="hidden sm:block text-[10px] font-bold text-slate-400 mt-2 tracking-widest">康妹</p>
                 </div>
-
             </div>
-
-            <!-- 標語與版權 -->
             <div class="pt-8 border-t border-white/5">
                 <p class="text-brand-orange text-sm font-bold tracking-[0.4em] mb-4 uppercase">京簡康 - 健康新餐食</p>
                 <p class="text-slate-600 text-[10px] tracking-widest uppercase">© 2024 JING JIAN KANG. All Rights Reserved.</p>
@@ -375,7 +391,19 @@
         }
 
         function openAIChat(show = true) { document.getElementById('aiChat').classList.toggle('chat-active', show); }
-        function toggleModal(show) { document.getElementById('storeModal').classList.toggle('modal-active', show); }
+        
+        // 切換門市選擇彈窗
+        function toggleModal(show) { 
+            const modal = document.getElementById('storeModal');
+            if (show) {
+                modal.classList.remove('hidden');
+                modal.classList.add('modal-active');
+            } else {
+                modal.classList.add('hidden');
+                modal.classList.remove('modal-active');
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             renderMenu();
         });
