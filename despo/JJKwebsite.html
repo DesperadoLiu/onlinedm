@@ -25,7 +25,8 @@
     <style>
         body { font-family: 'Noto Sans TC', sans-serif; scroll-behavior: smooth; }
         .hero-bg {
-            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/JJK-視覺照3去番茄.jpg');
+            /* 調整遮罩透明度至 0.15，確保視覺亮麗 */
+            background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), url('https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/JJK-視覺照3去番茄.jpg');
             background-size: cover;
             background-position: center;
         }
@@ -52,6 +53,22 @@
         .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
         .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
         @keyframes blink { 0% { opacity: 0.2; } 20% { opacity: 1; } 100% { opacity: 0.2; } }
+
+        /* 影片容器比例控制 */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 比例 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 2.5rem;
+        }
+        .video-container iframe, .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -67,6 +84,7 @@
                 </div>
                 <div class="hidden md:flex space-x-10">
                     <a href="#about" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">品牌理念</a>
+                    <a href="#video" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">形象影片</a>
                     <a href="#menu" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">特色餐盒</a>
                     <a href="#locations" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">服務據點</a>
                 </div>
@@ -129,8 +147,34 @@
         </div>
     </section>
 
+    <!-- 形象影片區塊 (Brand Video) -->
+    <section id="video" class="py-24 bg-slate-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-wider">品牌形象影片</h2>
+                <div class="w-12 h-1.5 bg-brand-orange mx-auto rounded-full"></div>
+            </div>
+            <!-- 使用 <video> 標籤播放直連 MP4 檔案，並設定自動播放與重複播放 -->
+            <div class="video-container shadow-2xl bg-black">
+                <video 
+                    src="https://videos.files.wordpress.com/emHG9b3J/jjk_e5bdb1e78987_e5bda2e8b1a1e4b880e58886e58d8a.mp4" 
+                    autoplay 
+                    muted 
+                    loop 
+                    playsinline 
+                    controls
+                    class="w-full h-full object-cover">
+                    您的瀏覽器不支援 HTML5 影片播放。
+                </video>
+            </div>
+            <p class="mt-8 text-center text-slate-500 italic font-light tracking-widest">
+                每一道工序，都是為了將最純粹的美味交到您手中。
+            </p>
+        </div>
+    </section>
+
     <!-- 4. 特色餐點 (Menu) -->
-    <section id="menu" class="py-24 bg-slate-50">
+    <section id="menu" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-wider">健康。新餐食</h2>
@@ -145,12 +189,12 @@
     </section>
 
     <!-- 5. 服務據點 (Locations) -->
-    <section id="locations" class="py-24 bg-white">
+    <section id="locations" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-12 tracking-wider">服務據點</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
                 <!-- 延平店 -->
-                <div class="bg-slate-50 p-10 rounded-[2.5rem] shadow-sm border border-slate-200 hover:border-brand-orange transition-colors">
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-200 hover:border-brand-orange transition-colors">
                     <h3 class="text-2xl font-bold text-brand-orange mb-4 text-center">台北延平店</h3>
                     <p class="text-slate-600 text-sm mb-2 text-center">📍 台北市中正區延平南路171巷1號1樓</p>
                     <p class="text-slate-600 text-sm mb-8 text-center">📞 02-2331-5166</p>
@@ -160,7 +204,7 @@
                     </div>
                 </div>
                 <!-- 伊通店 -->
-                <div class="bg-slate-50 p-10 rounded-[2.5rem] shadow-sm border border-slate-200 hover:border-brand-orange transition-colors">
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-200 hover:border-brand-orange transition-colors">
                     <h3 class="text-2xl font-bold text-brand-orange mb-4 text-center">台北伊通店</h3>
                     <p class="text-slate-600 text-sm mb-2 text-center">📍 台北市中山區伊通街109之2號1樓</p>
                     <p class="text-slate-600 text-sm mb-8 text-center">📞 02-2507-9662</p>
@@ -170,7 +214,7 @@
                     </div>
                 </div>
                 <!-- 北大店 -->
-                <div class="bg-slate-50 p-10 rounded-[2.5rem] shadow-sm border border-slate-200 hover:border-brand-orange transition-colors">
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-200 hover:border-brand-orange transition-colors">
                     <h3 class="text-2xl font-bold text-brand-orange mb-4 text-center">三峽北大店</h3>
                     <p class="text-slate-600 text-sm mb-2 text-center">📍 新北市三峽區學成路250號</p>
                     <p class="text-slate-600 text-sm mb-8 text-center">📞 02-2673-6012</p>
@@ -197,7 +241,7 @@
         </div>
         <div id="chatHistory" class="flex-grow p-5 overflow-y-auto bg-slate-50 space-y-4 text-sm scroll-smooth">
             <div class="bg-white border border-slate-100 p-4 rounded-3xl rounded-tl-none text-slate-700 shadow-sm leading-relaxed">
-                您好！我是京簡康的 ✨ **AI 營養管家**。我可以根據您的目標（如增肌、低油鹽、或是特定口味）為您推薦餐盒。請問您今天想達成什麼健康目標？
+                您好！我是京簡康的 ✨ **AI 營養管家**。我可以根據您的目標為您推薦餐盒。請問您今天想達成什麼健康目標？
             </div>
         </div>
         <div id="chatLoading" class="hidden px-6 py-2">
@@ -211,24 +255,24 @@
         </div>
     </div>
 
-    <!-- 門市選擇 Modal (導航列使用) -->
+    <!-- 門市選擇 Modal (導覽列使用) -->
     <div id="storeModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
         <div class="absolute inset-0 bg-slate-900/65 backdrop-blur-md" onclick="toggleModal(false)"></div>
-        <div class="relative bg-white rounded-[3rem] w-full max-w-lg overflow-hidden shadow-2xl">
+        <div class="relative bg-white rounded-[3rem] w-full max-lg overflow-hidden shadow-2xl">
             <div class="p-8 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
                 <h3 class="text-xl font-bold text-brand-dark">請選擇預訂門市</h3>
                 <button onclick="toggleModal(false)" class="text-slate-400 hover:text-slate-900 text-3xl">&times;</button>
             </div>
             <div class="p-8 space-y-4">
-                <a href="https://reurl.cc/E4peRK" target="_blank" class="flex items-center justify-between p-7 border border-slate-100 rounded-3xl hover:bg-orange-50 hover:border-brand-orange transition-all group shadow-sm">
+                <a href="https://reurl.cc/E4peRK" target="_blank" class="flex items-center justify-between p-7 border border-slate-100 rounded-3xl hover:bg-orange-50 transition-all group shadow-sm">
                     <div><span class="block font-bold text-lg text-slate-800">台北延平店</span><span class="text-xs text-slate-400 italic mt-1">台北市中正區延平南路171巷1號</span></div>
                     <span class="bg-brand-orange text-white w-10 h-10 rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform">→</span>
                 </a>
-                <a href="https://reurl.cc/yYQGMO" target="_blank" class="flex items-center justify-between p-7 border border-slate-100 rounded-3xl hover:bg-orange-50 hover:border-brand-orange transition-all group shadow-sm">
+                <a href="https://reurl.cc/yYQGMO" target="_blank" class="flex items-center justify-between p-7 border border-slate-100 rounded-3xl hover:bg-orange-50 transition-all group shadow-sm">
                     <div><span class="block font-bold text-lg text-slate-800">台北伊通店</span><span class="text-xs text-slate-400 italic mt-1">台北市中山區伊通街109之2號</span></div>
                     <span class="bg-brand-orange text-white w-10 h-10 rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform">→</span>
                 </a>
-                <a href="https://ddc.ai/1bblEe" target="_blank" class="flex items-center justify-between p-7 border border-slate-100 rounded-3xl hover:bg-orange-50 hover:border-brand-orange transition-all group shadow-sm">
+                <a href="https://ddc.ai/1bblEe" target="_blank" class="flex items-center justify-between p-7 border border-slate-100 rounded-3xl hover:bg-orange-50 transition-all group shadow-sm">
                     <div><span class="block font-bold text-lg text-slate-800">三峽北大店</span><span class="text-xs text-slate-400 italic mt-1">新北市三峽區學成路250號</span></div>
                     <span class="bg-brand-orange text-white w-10 h-10 rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform">→</span>
                 </a>
@@ -242,24 +286,22 @@
             <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-LOGO-給廠商-03.png" alt="京簡康 Logo" class="h-20 w-auto brightness-0 invert opacity-90 object-contain">
         </div>
         <p class="text-brand-orange text-base font-bold tracking-[0.4em] mb-6">京簡康 - 健康新餐食</p>
-        <!-- 更新後的標語 -->
-        <p class="text-slate-500 text-xs italic mb-12 tracking-[0.3em] uppercase">健康不簡單，簡單才健康</p>
+        <p class="text-slate-500 text-xs italic mb-12 tracking-[0.3em] uppercase font-medium">健康不簡單，簡單才健康</p>
         
-        <!-- 加大後的社群連結區塊 -->
         <div class="flex justify-center space-x-16 mb-12">
             <!-- Facebook -->
             <a href="https://www.facebook.com/JingJianKang2021" target="_blank" class="text-slate-400 hover:text-white transition-all flex flex-col items-center gap-3 group">
                 <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center group-hover:bg-brand-orange transition-colors">
                     <svg class="w-10 h-10 fill-current" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3l-.5 3H13v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>
                 </div>
-                <span class="text-xs tracking-widest opacity-70 group-hover:opacity-100">Facebook 粉絲團</span>
+                <span class="text-xs tracking-widest opacity-70 group-hover:opacity-100 font-bold">Facebook 粉絲團</span>
             </a>
             <!-- Official Line -->
             <a href="https://lin.ee/5qgDoSu" target="_blank" class="text-slate-400 hover:text-white transition-all flex flex-col items-center gap-3 group">
                 <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center group-hover:bg-brand-orange transition-colors">
                     <svg class="w-10 h-10 fill-current" viewBox="0 0 24 24"><path d="M24 10.3c0-4.6-5.4-8.3-12-8.3S0 5.7 0 10.3c0 4.1 4.3 7.5 10.1 8.2.4.1.9.4 1 .9.1.5.1 1.2 0 1.9-.1.4-.5 1.7-.6 1.8 0 .1-.3.5 1.1.3.8-.1 4.3-2.6 5.8-4.4 1.5-1.8 2.3-3.6 2.3-5.3 4.3-3.4 4.3-3.4 4.3-3.4zM7.2 13.2H4.8c-.2 0-.4-.2-.4-.4V7.6c0-.2.2-.4.4-.4h.4c.2 0 .4.2.4.4v4.8h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4zm2.8 0h-.4c-.2 0-.4-.2-.4-.4V7.6c0-.2.2-.4.4-.4h.4c.2 0 .4.2.4.4v5.2c0 .2-.2.4-.4.4zm5.5 0h-.4c-.1 0-.2 0-.3-.1L12.4 9v3.8c0 .2-.2.4-.4.4h-.4c-.2 0-.4-.2-.4-.4V7.6c0-.2.2-.4.4-.4h.4c.1 0 .2 0 .3.1l2.4 4.1V7.6c0-.2.2-.4.4-.4h.4c.2 0 .4.2.4.4v5.2c0 .2-.2.4-.4.4zm4.1-1.1h-1.6V10h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4zm0-2.8h-1.6V7.6h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4zm0 5.1h-1.6c-.2 0-.4-.2-.4-.4v-5.2c0-.2.2-.4.4-.4h2.4c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4H18v1.2h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4H18v1.2h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4z"/></svg>
                 </div>
-                <span class="text-xs tracking-widest opacity-70 group-hover:opacity-100">官方 Line 帳號</span>
+                <span class="text-xs tracking-widest opacity-70 group-hover:opacity-100 font-bold">官方 Line 帳號</span>
             </a>
         </div>
         
