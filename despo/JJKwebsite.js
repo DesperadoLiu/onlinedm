@@ -2,7 +2,7 @@ const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzDdDOHTXsUke8H
 const MAX_MESSAGE_LENGTH = 300;
 const CHAT_COOLDOWN_MS = 1500;
 const REQUEST_TIMEOUT_MS = 15000;
-const TURNSTILE_TIMEOUT_MS = 12000;
+const TURNSTILE_TIMEOUT_MS = 20000;
 const VISITOR_ID_KEY = 'jjk_visitor_id_v1';
 const ALLOWED_EXTERNAL_HOSTS = new Set(['reurl.cc', 'ddc.ai', 'www.facebook.com', 'lin.ee']);
 const AI_AVATAR_URL = 'https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-04.png';
@@ -103,7 +103,13 @@ async function getTurnstileToken() {
 
     return new Promise((resolve, reject) => {
         const holder = document.createElement('div');
-        holder.className = 'hidden';
+        holder.style.position = 'fixed';
+        holder.style.left = '-9999px';
+        holder.style.top = '0';
+        holder.style.width = '1px';
+        holder.style.height = '1px';
+        holder.style.opacity = '0';
+        holder.style.pointerEvents = 'none';
         document.body.appendChild(holder);
 
         let widgetId = null;
