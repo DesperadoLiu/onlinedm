@@ -28,12 +28,14 @@
         .chat-window { box-shadow: 0 10px 40px rgba(232, 112, 51, 0.15); display: none; }
         .chat-active { display: flex !important; animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        .ai-loading { animation: spin 1s linear infinite; pointer-events: none; background-color: #E87033 !important; color: white !important; }
+        .ai-loading { pointer-events: none; opacity: 0.7; filter: saturate(0.85); }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 2.5rem; }
         .video-container video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
         #toast { visibility: hidden; min-width: 250px; background-color: #333; color: #fff; text-align: center; border-radius: 12px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
         #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+        .chat-user-bubble { background-color: #E87033; color: #ffffff; border: 1px solid #D9642A; }
+        .chat-ai-bubble { background-color: #ffffff; color: #334155; border: 1px solid #E2E8F0; }
         @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
         @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
         .mascot-float { animation: floating 3s ease-in-out infinite; }
@@ -125,6 +127,7 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-wider uppercase text-center">健康。新餐食</h2>
                 <div class="w-12 h-1.5 bg-brand-orange mx-auto rounded-full mt-4"></div>
                 <p class="text-slate-500 mt-6 tracking-[0.2em] font-medium uppercase text-center">全系列 12 款精選餐盒，點擊 ✨ 聽取營養介紹</p>
+                <p class="text-slate-400 mt-2 text-sm text-center">每個餐盒右上角「🔊 語音介紹」可播放餐點說明。</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10" id="mealContainer"></div>
         </div>
@@ -200,7 +203,7 @@
         <div id="chatHistory" class="flex-grow p-5 overflow-y-auto bg-slate-50 space-y-4 text-sm scroll-smooth">
             <div class="flex gap-3">
                 <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-公仔-AI完整檔-04.png" class="h-10 w-10 rounded-full bg-orange-100 p-1 object-contain" alt="京哥">
-                <div class="bg-white border p-4 rounded-3xl rounded-tl-none text-slate-700 shadow-sm leading-relaxed">
+                <div class="chat-ai-bubble p-4 rounded-3xl rounded-tl-none shadow-sm leading-relaxed">
                     哩賀！我是京簡康的吉祥物「京哥」。想知道今天適合吃什麼來照顧身體嗎？儘管問我！✨
                 </div>
             </div>

@@ -177,11 +177,16 @@ function toggleModal(show) {
 function buildMealCard(meal) {
     const card = createElement('div', 'menu-card bg-white rounded-[3rem] overflow-hidden border border-slate-100 flex flex-col h-full shadow-sm relative group');
 
-    const ttsButton = createElement('button', 'absolute top-5 right-5 bg-white/90 hover:bg-brand-orange hover:text-white text-brand-orange w-11 h-11 rounded-full flex items-center justify-center shadow-lg z-10 transition-all active:scale-90', 'TTS');
+    const ttsButton = createElement('button', 'absolute top-5 right-5 bg-white/95 hover:bg-brand-orange hover:text-white text-brand-orange rounded-full flex items-center gap-1.5 px-3 py-2 shadow-lg z-10 transition-all active:scale-95 text-xs font-bold border border-white/60');
     ttsButton.type = 'button';
+    ttsButton.title = '播放餐點語音介紹';
     ttsButton.setAttribute('aria-label', `播放${meal.name}語音介紹`);
+    ttsButton.append(
+        createElement('span', 'leading-none', '🔊'),
+        createElement('span', 'tracking-wide', '語音介紹'),
+    );
     ttsButton.addEventListener('click', () => {
-        void callGAS(ttsButton, 'tts', `${meal.name}?${meal.desc}`);
+        void callGAS(ttsButton, 'tts', `${meal.name}。${meal.desc}`);
     });
 
     const imageContainer = createElement('div', 'h-64 bg-slate-50 flex items-center justify-center p-8 overflow-hidden');
@@ -213,7 +218,7 @@ function renderMenu() {
 }
 
 function appendUserMessage(history, text) {
-    history.appendChild(createElement('div', 'ml-auto bg-brand-orange text-white p-4 rounded-3xl rounded-tr-none text-sm max-w-[85%] shadow-md', text));
+    history.appendChild(createElement('div', 'chat-user-bubble ml-auto p-4 rounded-3xl rounded-tr-none text-sm max-w-[85%] shadow-md', text));
 }
 
 function appendAiMessage(history, text) {
@@ -223,7 +228,7 @@ function appendAiMessage(history, text) {
     avatar.alt = 'AI ??';
     avatar.className = 'h-10 w-10 rounded-full bg-orange-100 p-1 object-contain';
 
-    const message = createElement('div', 'bg-white border p-4 rounded-3xl rounded-tl-none text-slate-700 max-w-[85%] shadow-sm leading-relaxed', text);
+    const message = createElement('div', 'chat-ai-bubble p-4 rounded-3xl rounded-tl-none max-w-[85%] shadow-sm leading-relaxed', text);
     wrapper.append(avatar, message);
     history.appendChild(wrapper);
 }
