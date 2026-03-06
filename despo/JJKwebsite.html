@@ -211,7 +211,7 @@
         </div>
     </div>
 
-    <!-- 門市選擇 Modal -->
+    <!-- 門市選擇 Modal (導航列使用) -->
     <div id="storeModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
         <div class="absolute inset-0 bg-slate-900/65 backdrop-blur-md" onclick="toggleModal(false)"></div>
         <div class="relative bg-white rounded-[3rem] w-full max-w-lg overflow-hidden shadow-2xl">
@@ -242,17 +242,27 @@
             <img src="https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/京簡康-LOGO-給廠商-03.png" alt="京簡康 Logo" class="h-20 w-auto brightness-0 invert opacity-90 object-contain">
         </div>
         <p class="text-brand-orange text-base font-bold tracking-[0.4em] mb-6">京簡康 - 健康新餐食</p>
-        <p class="text-slate-500 text-xs italic mb-12 tracking-[0.3em] uppercase">Eat Simple, Stay Healthy.</p>
-        <div class="flex justify-center space-x-10 mb-12">
-            <a href="https://www.facebook.com/JingJianKang2021" target="_blank" class="text-slate-400 hover:text-white transition-colors flex flex-col items-center gap-2">
-                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3l-.5 3H13v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>
-                <span class="text-[10px]">Facebook</span>
+        <!-- 更新後的標語 -->
+        <p class="text-slate-500 text-xs italic mb-12 tracking-[0.3em] uppercase">健康不簡單，簡單才健康</p>
+        
+        <!-- 加大後的社群連結區塊 -->
+        <div class="flex justify-center space-x-16 mb-12">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/JingJianKang2021" target="_blank" class="text-slate-400 hover:text-white transition-all flex flex-col items-center gap-3 group">
+                <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center group-hover:bg-brand-orange transition-colors">
+                    <svg class="w-10 h-10 fill-current" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3l-.5 3H13v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>
+                </div>
+                <span class="text-xs tracking-widest opacity-70 group-hover:opacity-100">Facebook 粉絲團</span>
             </a>
-            <a href="https://lin.ee/5qgDoSu" target="_blank" class="text-slate-400 hover:text-white transition-colors flex flex-col items-center gap-2">
-                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M24 10.3c0-4.6-5.4-8.3-12-8.3S0 5.7 0 10.3c0 4.1 4.3 7.5 10.1 8.2.4.1.9.4 1 .9.1.5.1 1.2 0 1.9-.1.4-.5 1.7-.6 1.8 0 .1-.3.5 1.1.3.8-.1 4.3-2.6 5.8-4.4 1.5-1.8 2.3-3.6 2.3-5.3 4.3-3.4 4.3-3.4 4.3-3.4zM7.2 13.2H4.8c-.2 0-.4-.2-.4-.4V7.6c0-.2.2-.4.4-.4h.4c.2 0 .4.2.4.4v4.8h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4zm2.8 0h-.4c-.2 0-.4-.2-.4-.4V7.6c0-.2.2-.4.4-.4h.4c.2 0 .4.2.4.4v5.2c0 .2-.2.4-.4.4zm5.5 0h-.4c-.1 0-.2 0-.3-.1L12.4 9v3.8c0 .2-.2.4-.4.4h-.4c-.2 0-.4-.2-.4-.4V7.6c0-.2.2-.4.4-.4h.4c.1 0 .2 0 .3.1l2.4 4.1V7.6c0-.2.2-.4.4-.4h.4c.2 0 .4.2.4.4v5.2c0 .2-.2.4-.4.4zm4.1-1.1h-1.6V10h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4zm0-2.8h-1.6V7.6h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4zm0 5.1h-1.6c-.2 0-.4-.2-.4-.4v-5.2c0-.2.2-.4.4-.4h2.4c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4H18v1.2h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4H18v1.2h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4z"/></svg>
-                <span class="text-[10px]">Official Line</span>
+            <!-- Official Line -->
+            <a href="https://lin.ee/5qgDoSu" target="_blank" class="text-slate-400 hover:text-white transition-all flex flex-col items-center gap-3 group">
+                <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center group-hover:bg-brand-orange transition-colors">
+                    <svg class="w-10 h-10 fill-current" viewBox="0 0 24 24"><path d="M24 10.3c0-4.6-5.4-8.3-12-8.3S0 5.7 0 10.3c0 4.1 4.3 7.5 10.1 8.2.4.1.9.4 1 .9.1.5.1 1.2 0 1.9-.1.4-.5 1.7-.6 1.8 0 .1-.3.5 1.1.3.8-.1 4.3-2.6 5.8-4.4 1.5-1.8 2.3-3.6 2.3-5.3 4.3-3.4 4.3-3.4 4.3-3.4zM7.2 13.2H4.8c-.2 0-.4-.2-.4-.4V7.6c0-.2.2-.4.4-.4h.4c.2 0 .4.2.4.4v4.8h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4zm2.8 0h-.4c-.2 0-.4-.2-.4-.4V7.6c0-.2.2-.4.4-.4h.4c.2 0 .4.2.4.4v5.2c0 .2-.2.4-.4.4zm5.5 0h-.4c-.1 0-.2 0-.3-.1L12.4 9v3.8c0 .2-.2.4-.4.4h-.4c-.2 0-.4-.2-.4-.4V7.6c0-.2.2-.4.4-.4h.4c.1 0 .2 0 .3.1l2.4 4.1V7.6c0-.2.2-.4.4-.4h.4c.2 0 .4.2.4.4v5.2c0 .2-.2.4-.4.4zm4.1-1.1h-1.6V10h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4zm0-2.8h-1.6V7.6h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4zm0 5.1h-1.6c-.2 0-.4-.2-.4-.4v-5.2c0-.2.2-.4.4-.4h2.4c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4H18v1.2h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4H18v1.2h1.6c.2 0 .4.2.4.4v.4c0 .2-.2.4-.4.4z"/></svg>
+                </div>
+                <span class="text-xs tracking-widest opacity-70 group-hover:opacity-100">官方 Line 帳號</span>
             </a>
         </div>
+        
         <div class="text-slate-700 text-[10px] tracking-widest">© 2024 JING JIAN KANG. All Rights Reserved.</div>
     </footer>
 
@@ -260,6 +270,7 @@
         const apiKey = ""; 
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'jjk-web-official';
 
+        // 完整 12 項餐盒數據
         const menuData = [
             { id: 1, name: "香魯牛腱餐盒", price: 170, desc: "精選十三香滷包，慢火燉煮牛腱，濃郁風味，層次分明。牛原料產地：澳洲、美國。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/香魯牛煎餐盒-去番茄.png" },
             { id: 2, name: "焙煎胡麻肉片餐盒", price: 115, desc: "嚴選日式焙煎胡麻醬，香味濃郁，搭配豬肉片口感滑順。豬原料產地：台灣、巴拉圭等。", img: "https://formosachangcoltd.wpcomstaging.com/wp-content/uploads/2026/03/焙煎胡麻肉片餐盒-去番茄.png" },
@@ -297,7 +308,6 @@
             `).join('');
         }
 
-        // 使用更穩定的 DOMContentLoaded 確保容器已被讀取
         document.addEventListener('DOMContentLoaded', renderMenu);
 
         function toggleModal(show) {
